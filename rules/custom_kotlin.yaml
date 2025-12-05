@@ -1,0 +1,20 @@
+rules:
+  - id: kotlin-no-main-thread-block
+    pattern: |
+      Thread.sleep($ANY)
+    message: "不要在主线程调用 Thread.sleep，容易 ANR，改用协程 + delay。"
+    languages: [kotlin, java]
+    severity: ERROR
+
+  - id: kotlin-global-scope
+    pattern: |
+      GlobalScope.launch(
+    message: "GlobalScope.launch 容易造成协程泄漏，推荐使用 lifecycleScope/viewModelScope。"
+    languages: [kotlin]
+    severity: WARNING
+
+  - id: kotlin-nullable-forced
+    pattern: "!!"
+    message: "!! 可能导致 NPE，尽量用 ?. 或 let/?.run 来处理。"
+    languages: [kotlin]
+    severity: ERROR

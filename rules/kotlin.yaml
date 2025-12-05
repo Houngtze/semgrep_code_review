@@ -1,0 +1,26 @@
+rules:
+  - id: kotlin-no-main-thread-block
+    pattern: |
+      Thread.sleep($ANY)
+    message: "Blocking main thread detected (Thread.sleep). Avoid blocking UI thread—use coroutines and proper dispatchers."
+    languages: [kotlin, java]
+    severity: ERROR
+
+  - id: kotlin-coroutine-scope-leak
+    pattern: |
+      GlobalScope.launch(
+    message: "Using GlobalScope.launch can leak coroutines. Prefer lifecycleScope/viewModelScope/supervisorScope."
+    languages: [kotlin]
+    severity: WARNING
+
+  - id: kotlin-nullable-forced
+    pattern: "!!"
+    message: "Forced non-null (!!) may cause NPE. Prefer safer optional handling or explicit checks."
+    languages: [kotlin]
+    severity: ERROR
+
+  - id: kotlin-io-on-main
+    pattern: "File($X).read"
+    message: "IO operations on main thread risk ANR. Run heavy IO on IO dispatcher."
+    languages: [kotlin, java]
+    severity: WARNING

@@ -1,0 +1,146 @@
+rules:
+  # -----------------------------------------------------
+  # 1. 禁止 v-html（uni-app 中容易 XSS）
+  # -----------------------------------------------------
+  - id: uniapp-avoid-v-html
+    message: |
+      检测到使用 v-html。
+      uni-app（尤其 H5、小程序 Webview）中动态注入 HTML 容易导致 XSS 漏洞，
+      请使用安全的渲染方式（例如组件/插值渲染），不要直接使用 v-html。
+    severity: WARNING
+    languages: [vue]
+    pattern-regex: "<[^>]+v-html="
+    metadata:
+      category: security
+      technology: [uni-app, vue]
+      cwe: "CWE-79: Cross-site Scripting (XSS)"
+
+  # -----------------------------------------------------
+  # 2. uni.request 使用 http:// 而不是 https://
+  # -----------------------------------------------------
+  - id: uniapp-uni-request-http
+    message: |
+      检测到 uni.request 使用了 http:// URL。
+      建议在正式环境中统一使用 https://，避免敏感数据明文传输。
+    severity: WARNING
+    languages: [javascript, typescript, vue]
+    patterns:
+      - pattern: |
+          uni.request({
+            url: $URL,
+            ...
+          })
+      - metavariable-regex:
+          metavariable: $URL
+          regex: "http://"
+    metadata:
+      category: security
+      technology: [uni-app]
+
+  # -----------------------------------------------------
+  # 3. uni.request 未显式设置 timeout
+  #    （防止请求永远挂着，影响体验和资源）
+  # -----------------------------------------------------
+  - id: uniapp-uni-request-no-timeout
+    message: |
+      检测到 uni.request 未显式设置 timeout。
+      建议为网络请求设置合适的超时时间，避免接口长时间无响应影响用户体验。
+    severity: LOW
+    languages: [javascript, typescript, vue]
+    patterns:
+      - pattern: |
+          uni.request({
+            ...
+          })
+      - pattern-not: |
+          uni.request({
+            ..., 
+            timeout: $TIMEOUT,
+            ...
+          })
+    metadata:
+      category: reliability
+      technology: [uni-app]
+
+  # -----------------------------------------------------
+  # 4. 将 token/密码 等敏感信息存入本地存储
+  # -----------------------------------------------------
+  - id: uniapp-insecure-storage-token
+    message: |
+      检测到使用 uni.setStorageSync/uni.setStorage 存储 token/密码 等敏感信息。
+      建议避免长期持久化敏感数据，可仅存短期 token 或采用更安全的后端会话机制。
+    severity: WARNING
+    languages: [javascript, typescript, vue]
+    patterns:
+      - pattern-either:
+          - pattern: uni.setStorageSync($KEY, $VALUE)
+          - pattern: uni.setStorage({ key: $KEY, data: $VALUE, ... })
+      - metavariable-regex:
+          metavariable: $KEY
+          regex: "(token|access_token|refresh_token|pwd|password|secret|session)"
+    metadata:
+      category: security
+      technology: [uni-app]
+
+  # -----------------------------------------------------
+  # 5. 禁止使用 eval / new Function（高危）
+  # -----------------------------------------------------
+  - id: uniapp-avoid-eval
+    message: |
+      检测到使用 eval 或 new Function。
+      动态执行字符串代码存在极高的安全风险，容易导致代码注入攻击。
+      建议改为普通函数、映射表或 JSON 解析等安全方案。
+    severity: ERROR
+    languages: [javascript, typescript, vue]
+    pattern-either:
+      - pattern: eval($EXPR)
+      - pattern: new Function($ARGS, $BODY)
+    metadata:
+      category: security
+      technology: [uni-app, vue]
+
+  # -----------------------------------------------------
+  # 6. 引入 http:// 外链资源（img/script/style 等）
+  # -----------------------------------------------------
+  - id: uniapp-remote-http-resource
+    message: |
+      检测到使用 http:// 外链资源（脚本/图片/静态资源等）。
+      建议统一使用 https://，避免内容被劫持或中间人攻击。
+    severity: MEDIUM
+    languages: [vue, html, javascript, typescript]
+    pattern-regex: "http://"
+    metadata:
+      category: security
+      technology: [uni-app, h5]
+
+  # -----------------------------------------------------
+  # 7. console.log 打印敏感信息（手机号/身份证/密码等）
+  # -----------------------------------------------------
+  - id: uniapp-console-sensitive-log
+    message: |
+      检测到 console.log 中可能包含敏感信息（如 token、密码、手机号、身份证等）。
+      建议在生产代码中避免直接打印敏感数据，防止泄露。
+    severity: LOW
+    languages: [javascript, typescript, vue]
+    patterns:
+      - pattern: console.log($ARG, ...)
+      - metavariable-regex:
+          metavariable: $ARG
+          regex: "(token|password|pwd|phone|mobile|身份证|idcard)"
+    metadata:
+      category: privacy
+      technology: [uni-app, vue]
+
+  # -----------------------------------------------------
+  # 8. 硬编码的密钥/秘钥（简单检测）
+  # -----------------------------------------------------
+  - id: uniapp-hardcoded-secret
+    message: |
+      检测到代码中存在疑似硬编码的秘钥/密钥字符串。
+      建议通过配置文件或环境变量管理秘钥，不要直接写在仓库里。
+    severity: MEDIUM
+    languages: [javascript, typescript, vue]
+    pattern-regex: "(AKIA[0-9A-Z]{16}|secret_key|api_key|accessKey|secretKey)"
+    metadata:
+      category: security
+      technology: [uni-app, vue]

@@ -1,0 +1,18 @@
+rules:
+  - id: swift-force-unwrap
+    pattern: "!"
+    message: "强制解包 (!) 可能在运行时崩溃，优先使用 if let/guard let。"
+    languages: [swift]
+    severity: ERROR
+
+  - id: swift-strong-ref-cycle
+    pattern: "self."
+    message: "闭包中使用 self 时注意 [weak self]/[unowned self]，避免循环引用。"
+    languages: [swift]
+    severity: WARNING
+
+  - id: swift-async-error
+    pattern: "async"
+    message: "确认 async/await 调用周围是否有错误处理，避免未捕获异常。"
+    languages: [swift]
+    severity: INFO

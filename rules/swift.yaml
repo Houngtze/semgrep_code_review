@@ -1,0 +1,24 @@
+rules:
+  - id: swift-force-unwrap
+    pattern: "!"
+    message: "Force unwrap (!) can crash at runtime. Prefer optional binding (if let / guard) or safe unwrapping."
+    languages: [swift]
+    severity: ERROR
+
+  - id: swift-strong-ref-cycle
+    pattern: "self."
+    message: "Check for strong reference cycles in closures capturing `self`. Use [weak self] or [unowned self] when appropriate."
+    languages: [swift]
+    severity: WARNING
+
+  - id: swift-main-thread-ui
+    pattern: "DispatchQueue.global"
+    message: "Ensure UI updates happen on main thread. Use DispatchQueue.main.async for UI updates."
+    languages: [swift]
+    severity: WARNING
+
+  - id: swift-async-error-not-caught
+    pattern: "async"
+    message: "Ensure async/await calls are properly handled with try/catch when needed to avoid uncaught errors."
+    languages: [swift]
+    severity: WARNING

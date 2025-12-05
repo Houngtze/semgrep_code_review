@@ -1,0 +1,13 @@
+rules:
+  - id: disable_raw_dom
+    pattern: $X.innerHTML = $Y
+    message: Disabled rule
+    languages: [javascript]
+    severity: INFO
+    enabled: false # ❌ 这个字段 schema 里没有
+  - id: javascript.browser.security.raw-dom.raw-dom
+    enabled: false # ❌ 缺 message / pattern / languages / severity
+  - id: javascript.browser.security.innerhtml.innerhtml
+    enabled: false
+  - id: javascript.browser.security.document-write.document-write
+    enabled: false

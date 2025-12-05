@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Code Review Report / 代码审查报告</title>
+    <style>
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Helvetica, Arial, sans-serif;
+        background: #f5f5f7;
+        margin: 0;
+        padding: 24px;
+        color: #222;
+      }
+      .container {
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+      h1 {
+        margin: 0 0 16px;
+        font-size: 28px;
+      }
+      h2 {
+        margin-top: 24px;
+        font-size: 20px;
+      }
+      h3 {
+        margin: 12px 0;
+        font-size: 16px;
+      }
+      .card {
+        background: #fff;
+        border-radius: 10px;
+        padding: 16px 20px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+        margin-bottom: 16px;
+      }
+      .meta-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        font-size: 13px;
+        color: #555;
+      }
+      .meta-item span.label {
+        color: #999;
+      }
+      .badge {
+        display: inline-block;
+        padding: 2px 8px;
+        border-radius: 999px;
+        font-size: 11px;
+        margin-left: 8px;
+      }
+      .badge-high {
+        background: #ffe5e5;
+        color: #c62828;
+      }
+      .badge-medium {
+        background: #fff3cd;
+        color: #b26a00;
+      }
+      .badge-low {
+        background: #e8f5e9;
+        color: #2e7d32;
+      }
+      .badge-info {
+        background: #e3f2fd;
+        color: #1565c0;
+      }
+
+      .issue-item {
+        border-left: 4px solid #f44336;
+        padding: 8px 12px;
+        margin: 8px 0;
+        background: #fff8f8;
+        font-size: 13px;
+      }
+      .issue-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-weight: 600;
+        margin-bottom: 4px;
+      }
+      .issue-path {
+        font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo,
+          monospace;
+        font-size: 12px;
+        color: #555;
+      }
+      .issue-message {
+        margin: 4px 0;
+      }
+      .issue-suggestion {
+        margin-top: 4px;
+        color: #2e7d32;
+        font-size: 12px;
+      }
+
+      .ok-message {
+        border-left: 4px solid #4caf50;
+        background: #f3fff5;
+        padding: 8px 12px;
+        font-size: 13px;
+      }
+
+      pre {
+        background: #f4f4f4;
+        padding: 10px;
+        overflow: auto;
+        border-radius: 6px;
+        font-size: 12px;
+        line-height: 1.4;
+      }
+
+      .section-title-line {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .count-pill {
+        font-size: 12px;
+        color: #555;
+      }
+
+      .score-row {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-top: 10px;
+        font-size: 14px;
+      }
+      /* 通用样式：不要在这里设置背景色 */
+      .score-badge {
+        display: inline-block;
+        padding: 6px 18px;
+        border-radius: 999px;
+        font-weight: 600;
+        color: #fff;
+        font-size: 14px;
+        line-height: 1;
+      }
+
+      /* 不同评分档位的颜色，注意选择器都是 .score-badge.score-xxx */
+      .score-badge.score-excellent {
+        background: #16a34a; /* 绿：优秀 ≥ 90 */
+      }
+      .score-badge.score-good {
+        background: #22c55e; /* 黄绿：良好 75–89 */
+      }
+      .score-badge.score-fair {
+        background: #f97316; /* 橙：一般 60–74 */
+      }
+      .score-badge.score-poor {
+        background: #ef4444; /* 红：较差 < 60 */
+      }
+      .raw-json-block {
+        margin-top: 8px;
+      }
+
+      .raw-json-block > summary {
+        cursor: pointer;
+        font-size: 13px;
+        color: #2563eb; /* 蓝色字 */
+        list-style: none;
+      }
+
+      .raw-json-block > summary::-webkit-details-marker {
+        display: none; /* 去掉默认的小三角 */
+      }
+
+      .raw-json-block[open] > summary::before {
+        content: "▼ ";
+      }
+
+      .raw-json-block:not([open]) > summary::before {
+        content: "▶ ";
+      }
+      details summary {
+        cursor: pointer;
+        font-size: 12px;
+        color: #555;
+        user-select: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Code Review Report / 代码审查报告</h1>
+
+      <!-- 概览卡片 -->
+      <div class="card">
+        <div class="meta-row">
+          <div class="meta-item">
+            <span class="label">Project / 项目路径: </span>
+            <span>{{stats.projectPath}}</span>
+          </div>
+          <div class="meta-item">
+            <span class="label">Model / 模型: </span>
+            <span>{{stats.modelName}}</span>
+          </div>
+          <div class="meta-item">
+            <span class="label">Scan Time / 扫描时间: </span>
+            <span>{{stats.scanAt}}</span>
+          </div>
+        </div>
+        <div class="meta-row" style="margin-top: 8px">
+          <div class="meta-item">
+            <span class="label">Semgrep Findings / 静态规则告警: </span>
+            <span>{{stats.semgrepCount}}</span>
+          </div>
+          <div class="meta-item">
+            <span class="label">LLM Issues / AI 发现问题: </span>
+            <span>{{stats.llmIssueCount}}</span>
+          </div>
+        </div>
+
+        <div class="score-row">
+          <div class="score-area">
+            <span class="score-badge score-{{stats.scoreLevel}}">
+              {{stats.codeScore}} 分
+            </span>
+          </div>
+          <div class="score-label">
+            <div>
+              <span
+                >综合评级（中文）: <strong>{{stats.scoreLabelZh}}</strong></span
+              >
+            </div>
+            <div>
+              <span
+                >Overall Rating (EN):
+                <strong>{{stats.scoreLabelEn}}</strong></span
+              >
+            </div>
+            <div style="font-size: 12px; color: #888; margin-top: 2px">
+              说明：100
+              分为满分，告警越多、严重程度越高，得分越低，可用于版本质量对比。
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- AI Summary -->
+      <div class="card">
+        <div class="section-title-line">
+          <h2>AI Summary / AI 总结</h2>
+        </div>
+        <div style="font-size: 12px; color: #777; margin-bottom: 6px">
+          说明：由本地 LLM 根据 Semgrep
+          结果与代码改动自动生成的整体说明，<b>上方为中文总结</b>，可展开查看英文原文。
+        </div>
+
+        {{#llm.summary_zh}}
+        <!-- 有中文 summary，优先展示中文 -->
+        <pre>{{{llm.summary_zh}}}</pre>
+        {{/llm.summary_zh}} {{^llm.summary_zh}}
+        <!-- 没有中文，就退回英文或旧的 summary 字段 -->
+        {{#llm.summary_en}}
+        <pre>{{{llm.summary_en}}}</pre>
+        {{/llm.summary_en}} {{^llm.summary_en}} {{#llm.summary}}
+        <pre>{{{llm.summary}}}</pre>
+        {{/llm.summary}} {{^llm.summary}}
+        <div class="ok-message">No AI summary available, raw model output:</div>
+        <pre>{{{llm}}}</pre>
+        {{/llm.summary}} {{/llm.summary_en}} {{/llm.summary_zh}}
+        {{#llm.summary_en}}
+        <details style="margin-top: 8px; font-size: 12px; color: #555">
+          <summary>显示英文原文 / Show English Original</summary>
+          <pre style="margin-top: 6px">{{{llm.summary_en}}}</pre>
+        </details>
+        {{/llm.summary_en}}
+      </div>
+
+      <!-- LLM Issues -->
+      <div class="card">
+        <div class="section-title-line">
+          <h2>LLM Issues / AI 发现的问题</h2>
+          <span class="count-pill">{{stats.llmIssueCount}} items</span>
+        </div>
+        <div style="font-size: 12px; color: #777; margin-bottom: 6px">
+          说明：LLM
+          在综合静态规则与代码改动后归纳的重点问题和建议，适合放在评审备注里。
+        </div>
+
+        {{#hasLlmIssues}} {{#llmIssues}}
+        <div class="issue-item">
+          <div class="issue-header">
+            <div>
+              {{#severity}}
+              <span class="badge badge-high">{{severity}}</span>
+              {{/severity}} {{^severity}}
+              <span class="badge badge-info">AI</span>
+              {{/severity}}
+            </div>
+          </div>
+          {{#path}}
+          <div class="issue-path">{{path}}{{#line}}:{{line}}{{/line}}</div>
+          {{/path}}
+          <div class="issue-message">{{message}}</div>
+          {{#suggestion}}
+          <div class="issue-suggestion">
+            修复建议 / Suggestion: {{suggestion}}
+          </div>
+          {{/suggestion}}
+        </div>
+        {{/llmIssues}} {{/hasLlmIssues}} {{^hasLlmIssues}}
+        <div class="ok-message">
+          No LLM-detected issues. / AI 未发现明显问题。
+        </div>
+        {{/hasLlmIssues}}
+      </div>
+
+      <!-- Semgrep Findings -->
+      <div class="card">
+        <div class="section-title-line">
+          <h2>Semgrep Findings / 规则扫描结果</h2>
+          <span class="count-pill">{{stats.semgrepCount}} items</span>
+        </div>
+        <div style="font-size: 12px; color: #777; margin-bottom: 6px">
+          说明：基于 Semgrep 官方规则集
+          <code>p/default</code> 的静态扫描结果，可直接定位到具体文件与行号。
+        </div>
+
+        {{#hasSemgrep}} {{#semgrepFindings}}
+        <div
+          class="issue-item"
+          style="border-left-color: #ff9800; background: #fff9e6"
+        >
+          <div class="issue-header">
+            <div>
+              <span class="badge badge-medium">{{severity}}</span>
+              <span style="font-size: 11px; color: #777; margin-left: 4px"
+                >{{rule_id}}</span
+              >
+            </div>
+          </div>
+          <div class="issue-path">{{path}}{{#line}}:{{line}}{{/line}}</div>
+          <div class="issue-message">{{message}}</div>
+        </div>
+        {{/semgrepFindings}} {{/hasSemgrep}} {{^hasSemgrep}}
+        <div class="ok-message">
+          No Semgrep findings. / 未命中任何规则告警。
+        </div>
+        {{/hasSemgrep}}
+
+        <h2>Raw Semgrep JSON (for debugging) / 原始 Semgrep JSON（调试用）</h2>
+
+        <details class="raw-json-block">
+          <summary>展开查看原始 JSON / Show Raw JSON</summary>
+          <pre class="code-block">{{{semgrepRaw}}}</pre>
+        </details>
+      </div>
+    </div>
+  </body>
+</html>

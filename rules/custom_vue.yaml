@@ -1,0 +1,18 @@
+rules:
+  - id: vue-vfor-missing-key
+    pattern: "<* v-for=\"$ITEM in $LIST\">"
+    message: "v-for 未设置 :key，可能导致渲染错乱和性能问题。"
+    languages: [vue]
+    severity: WARNING
+
+  - id: vue-watch-async-loop
+    pattern: "watch($X, $CB"
+    message: "watch 回调里如果修改被监听的源，可能形成递归触发，请检查。"
+    languages: [vue, javascript, typescript]
+    severity: WARNING
+
+  - id: vue-ref-misuse
+    pattern: "ref("
+    message: "注意 ref()/reactive 使用是否合理，避免解包错误或丢失响应式。"
+    languages: [vue, javascript, typescript]
+    severity: INFO

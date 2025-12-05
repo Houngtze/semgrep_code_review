@@ -1,0 +1,138 @@
+rules:
+  # ============================
+  # 1. 禁止使用 v-html（高危 XSS）
+  # ============================
+  - id: vue-avoid-v-html
+    patterns:
+      - pattern: '<$TAG v-html="$EXPR" />'
+    message: "Avoid using v-html as it can cause XSS. Consider using text binding instead."
+    severity: ERROR
+    languages: [vue]
+    metadata:
+      category: security
+      cwe: "CWE-79"
+      owasp: "A03:2021 – Injection"
+
+  # ============================
+  # 2. 禁止 eval / new Function
+  # ============================
+  - id: vue-no-eval
+    patterns:
+      - pattern: eval($X)
+      - pattern: new Function($X)
+    message: "Avoid using eval() or new Function(). They are unsafe and can cause code injection."
+    severity: ERROR
+    languages: [javascript, vue]
+    metadata:
+      category: security
+      cwe: "CWE-95"
+
+  # ============================
+  # 3. API 请求没有错误处理
+  # ============================
+  - id: vue-api-no-error-handling
+    pattern: |
+      axios.$METHOD($URL, $DATA)
+        .then($THEN)
+    message: "API request missing .catch() block. Proper error handling is required."
+    languages: [javascript, vue]
+    severity: WARNING
+    metadata:
+      category: reliability
+
+  # ============================
+  # 4. Vue 组件内部逻辑过长（超过 80 行）
+  # ============================
+  - id: vue-large-method
+    pattern: |
+      {
+        methods: {
+          $METHOD() {
+            $BODY
+          }
+        }
+      }
+    message: "Vue method appears too large; consider refactoring into smaller functions."
+    severity: INFO
+    languages: [vue, javascript]
+    max-lines: 80
+    metadata:
+      category: maintainability
+
+  # ============================
+  # 7. v-for 忘记写 key（性能问题）
+  # ============================
+  - id: vue-vfor-missing-key
+    pattern: |
+      <template>
+        <TAG v-for="$ITEM in $LIST">
+          ...
+        </TAG>
+      </template>
+    message: "v-for requires a unique :key to ensure proper virtual DOM tracking."
+    severity: WARNING
+    languages: [vue]
+    metadata:
+      category: performance
+
+  # ============================
+  # 8. Vue watch 不带 deep / immediate 但监听对象（容易崩）
+  # ============================
+  - id: vue-watch-object-without-deep
+    pattern: |
+      watch: {
+        $OBJ(newVal, oldVal) {
+          $BODY
+        }
+      }
+    message: "Watching an object without deep:true may not work as expected."
+    severity: WARNING
+    languages: [vue]
+
+  # ============================
+  # 9. Vue3 script setup 中未使用的 defineProps
+  # ============================
+  - id: vue-unused-props
+    pattern: |
+      defineProps({ $PROPS })
+    message: "Some props defined in defineProps() may be unused."
+    severity: INFO
+    languages: [vue]
+
+  # ============================
+  # 10. 禁止直接修改 props（硬伤）
+  # ============================
+  - id: vue-no-prop-mutation
+    pattern: |
+      props.$X = $Y
+    message: "Do not mutate props directly. Use emits or computed properties instead."
+    severity: ERROR
+    languages: [vue]
+    metadata:
+      category: correctness
+      cwe: "CWE-374"
+
+  # ============================
+  # 11. uni-app 专用：禁止直接使用 uni.request 没写 fail()
+  # ============================
+  - id: uniapp-request-missing-fail
+    pattern: |
+      uni.request({
+        url: $URL,
+        success: $OK
+      })
+    message: "uni.request missing fail() handler — network failures will not be caught."
+    severity: WARNING
+    languages: [javascript, vue]
+
+  # ============================
+  # 12. uni-app 专用：navigateTo 没写 complete（容易黑屏）
+  # ============================
+  - id: uniapp-navigate-no-complete
+    pattern: |
+      uni.navigateTo({
+        url: $URL
+      })
+    message: "uni.navigateTo missing complete() callback."
+    severity: INFO
+    languages: [javascript, vue]

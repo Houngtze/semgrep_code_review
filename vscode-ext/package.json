@@ -1,0 +1,29 @@
+{
+  "name": "local-code-review",
+  "displayName": "Local Code Review",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.60.0"
+  },
+  "activationEvents": [
+    "onCommand:localCodeReview.start"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "localCodeReview.start",
+        "title": "Run Local Code Review"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "localCodeReview.start",
+          "when": "resourceLangId == javascript || resourceLangId == vue || resourceLangId == java || resourceLangId == kotlin || resourceLangId == swift",
+          "group": "navigation"
+        }
+      ]
+    }
+  }
+}
