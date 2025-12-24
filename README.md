@@ -32,6 +32,7 @@ pip install semgrep
 
 ```bash
 cd runner
+nvn use v16.20.2
 npm install
 ```
 
