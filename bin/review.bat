@@ -1,6 +1,7 @@
 @echo off
 if "%1"=="" (
-  echo Usage: review project-path
+  echo Usage: review project-path [base-branch] [target-branch]
+  echo   Example: review .\my-project master develop
   exit /b 1
 )
 pushd %~dp0\..\runner
@@ -9,5 +10,5 @@ if not exist node_modules (
   echo Installing deps...
   npm install
 )
-node index.js %~1
+node index.js %*
 popd

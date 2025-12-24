@@ -1,357 +1,391 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
   <head>
-    <meta charset="utf-8" />
+    <meta charset="UTF-8" />
     <title>Code Review Report / 代码审查报告</title>
     <style>
+      :root {
+        --green: #52c41a;
+        --blue: #1890ff;
+        --orange: #fa8c16;
+        --red: #ff4d4f;
+        --gray: #666;
+        --bg: #f5f7fa;
+        --card: #fff;
+      }
+
       body {
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-          Helvetica, Arial, sans-serif;
-        background: #f5f5f7;
         margin: 0;
         padding: 24px;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
+        background: var(--bg);
         color: #222;
       }
-      .container {
-        max-width: 1100px;
-        margin: 0 auto;
+
+      h1,
+      h2,
+      h3 {
+        margin: 0 0 12px;
       }
       h1 {
-        margin: 0 0 16px;
-        font-size: 28px;
+        font-size: 26px;
       }
       h2 {
-        margin-top: 24px;
         font-size: 20px;
+        margin-top: 24px;
       }
       h3 {
-        margin: 12px 0;
         font-size: 16px;
+        margin-top: 16px;
       }
+
       .card {
-        background: #fff;
+        background: var(--card);
         border-radius: 10px;
-        padding: 16px 20px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
-        margin-bottom: 16px;
+        padding: 16px 18px;
+        margin-bottom: 18px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
       }
-      .meta-row {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 16px;
+
+      .meta {
         font-size: 13px;
-        color: #555;
+        color: var(--gray);
+        line-height: 1.8;
       }
-      .meta-item span.label {
-        color: #999;
+
+      /* Score */
+      .score-wrap {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin-top: 10px;
       }
+      .score-circle {
+        width: 72px;
+        height: 72px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        font-weight: 800;
+        color: #fff;
+        flex-shrink: 0;
+      }
+      .score-circle.excellent {
+        background: var(--green);
+      }
+      .score-circle.good {
+        background: var(--blue);
+      }
+      .score-circle.fair {
+        background: var(--orange);
+      }
+      .score-circle.poor {
+        background: var(--red);
+      }
+
+      .score-text {
+        font-size: 14px;
+        line-height: 1.6;
+      }
+
+      /* Badges */
       .badge {
         display: inline-block;
         padding: 2px 8px;
-        border-radius: 999px;
-        font-size: 11px;
-        margin-left: 8px;
+        border-radius: 6px;
+        font-size: 12px;
+        margin-right: 6px;
+        background: #eee;
+        font-weight: 700;
       }
-      .badge-high {
-        background: #ffe5e5;
-        color: #c62828;
+      .badge.A {
+        background: #e6fffb;
+        color: #08979c;
       }
-      .badge-medium {
-        background: #fff3cd;
-        color: #b26a00;
+      .badge.M {
+        background: #e6f7ff;
+        color: #096dd9;
       }
-      .badge-low {
-        background: #e8f5e9;
-        color: #2e7d32;
+      .badge.D {
+        background: #fff1f0;
+        color: #cf1322;
       }
-      .badge-info {
-        background: #e3f2fd;
-        color: #1565c0;
+      .badge.R {
+        background: #fff7e6;
+        color: #d46b08;
       }
 
-      .issue-item {
-        border-left: 4px solid #f44336;
-        padding: 8px 12px;
-        margin: 8px 0;
-        background: #fff8f8;
+      table {
+        width: 100%;
+        border-collapse: collapse;
         font-size: 13px;
       }
-      .issue-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        font-weight: 600;
-        margin-bottom: 4px;
+      th,
+      td {
+        padding: 8px 10px;
+        border-bottom: 1px solid #f0f0f0;
+        text-align: left;
+        vertical-align: top;
       }
-      .issue-path {
-        font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo,
-          monospace;
-        font-size: 12px;
-        color: #555;
-      }
-      .issue-message {
-        margin: 4px 0;
-      }
-      .issue-suggestion {
-        margin-top: 4px;
-        color: #2e7d32;
-        font-size: 12px;
+      th {
+        background: #fafafa;
+        font-weight: 700;
       }
 
-      .ok-message {
-        border-left: 4px solid #4caf50;
-        background: #f3fff5;
-        padding: 8px 12px;
+      .ai-item {
+        border-left: 4px solid var(--blue);
+        padding-left: 12px;
+        margin-bottom: 14px;
+      }
+      .ai-risk {
+        color: var(--red);
         font-size: 13px;
+      }
+      .ai-suggest li {
+        margin-left: 16px;
+        line-height: 1.6;
       }
 
       pre {
-        background: #f4f4f4;
-        padding: 10px;
-        overflow: auto;
-        border-radius: 6px;
+        background: #0f172a;
+        color: #e5e7eb;
+        padding: 12px;
+        border-radius: 8px;
         font-size: 12px;
-        line-height: 1.4;
+        overflow-x: auto;
+        max-height: 520px;
+        white-space: pre;
       }
 
-      .section-title-line {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-      .count-pill {
-        font-size: 12px;
-        color: #555;
-      }
-
-      .score-row {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        margin-top: 10px;
-        font-size: 14px;
-      }
-      /* 通用样式：不要在这里设置背景色 */
-      .score-badge {
-        display: inline-block;
-        padding: 6px 18px;
-        border-radius: 999px;
-        font-weight: 600;
-        color: #fff;
-        font-size: 14px;
-        line-height: 1;
-      }
-
-      /* 不同评分档位的颜色，注意选择器都是 .score-badge.score-xxx */
-      .score-badge.score-excellent {
-        background: #16a34a; /* 绿：优秀 ≥ 90 */
-      }
-      .score-badge.score-good {
-        background: #22c55e; /* 黄绿：良好 75–89 */
-      }
-      .score-badge.score-fair {
-        background: #f97316; /* 橙：一般 60–74 */
-      }
-      .score-badge.score-poor {
-        background: #ef4444; /* 红：较差 < 60 */
-      }
-      .raw-json-block {
-        margin-top: 8px;
-      }
-
-      .raw-json-block > summary {
-        cursor: pointer;
-        font-size: 13px;
-        color: #2563eb; /* 蓝色字 */
-        list-style: none;
-      }
-
-      .raw-json-block > summary::-webkit-details-marker {
-        display: none; /* 去掉默认的小三角 */
-      }
-
-      .raw-json-block[open] > summary::before {
-        content: "▼ ";
-      }
-
-      .raw-json-block:not([open]) > summary::before {
-        content: "▶ ";
-      }
       details summary {
         cursor: pointer;
+        color: var(--blue);
+        font-size: 13px;
+        margin: 8px 0;
+      }
+      .empty {
+        color: #999;
+        font-size: 13px;
+      }
+
+      .subtle {
+        color: var(--gray);
+        font-size: 13px;
+      }
+
+      .pill {
+        display: inline-block;
+        padding: 2px 8px;
+        border-radius: 999px;
         font-size: 12px;
-        color: #555;
-        user-select: none;
+        background: #f0f0f0;
+        margin-right: 6px;
       }
     </style>
   </head>
+
   <body>
-    <div class="container">
-      <h1>Code Review Report / 代码审查报告</h1>
+    <h1>Code Review Report / 代码审查报告</h1>
 
-      <!-- 概览卡片 -->
-      <div class="card">
-        <div class="meta-row">
-          <div class="meta-item">
-            <span class="label">Project / 项目路径: </span>
-            <span>{{stats.projectPath}}</span>
-          </div>
-          <div class="meta-item">
-            <span class="label">Model / 模型: </span>
-            <span>{{stats.modelName}}</span>
-          </div>
-          <div class="meta-item">
-            <span class="label">Scan Time / 扫描时间: </span>
-            <span>{{stats.scanAt}}</span>
-          </div>
-        </div>
-        <div class="meta-row" style="margin-top: 8px">
-          <div class="meta-item">
-            <span class="label">Semgrep Findings / 静态规则告警: </span>
-            <span>{{stats.semgrepCount}}</span>
-          </div>
-          <div class="meta-item">
-            <span class="label">LLM Issues / AI 发现问题: </span>
-            <span>{{stats.llmIssueCount}}</span>
-          </div>
-        </div>
+    <div class="card">
+      <div class="meta">
+        Project / 项目路径：{{stats.projectPath}} <br />
+        Base Branch / 主分支：{{stats.baseBranch}} <br />
+        Target Branch / 目标分支：{{stats.targetBranch}} <br />
+        Model / 模型：{{stats.modelName}} <br />
+        Scan Time / 扫描时间：{{stats.scanAt}} <br />
+        Force Full Scan：{{stats.forceFull}} <br />
+        Semgrep Findings：{{stats.semgrepCount}}
+      </div>
 
-        <div class="score-row">
-          <div class="score-area">
-            <span class="score-badge score-{{stats.scoreLevel}}">
-              {{stats.codeScore}} 分
-            </span>
-          </div>
-          <div class="score-label">
-            <div>
-              <span
-                >综合评级（中文）: <strong>{{stats.scoreLabelZh}}</strong></span
-              >
-            </div>
-            <div>
-              <span
-                >Overall Rating (EN):
-                <strong>{{stats.scoreLabelEn}}</strong></span
-              >
-            </div>
-            <div style="font-size: 12px; color: #888; margin-top: 2px">
-              说明：100
-              分为满分，告警越多、严重程度越高，得分越低，可用于版本质量对比。
-            </div>
+      <div class="score-wrap">
+        <div class="score-circle {{stats.scoreLevel}}">
+          {{stats.codeScore}} 分
+        </div>
+        <div class="score-text">
+          综合评级（中文）：{{stats.scoreLabelZh}}<br />
+          Overall Rating (EN)：{{stats.scoreLabelEn}}<br />
+          <span class="subtle"
+            >说明：分数已过滤 INFO/样式类噪声，适合做团队 Code Review
+            评分参考。</span
+          >
+          <div class="subtle" style="margin-top: 8px">
+            严重性统计：
+            <span class="pill"
+              >CRITICAL: {{stats.severityBuckets.CRITICAL}}</span
+            >
+            <span class="pill">ERROR: {{stats.severityBuckets.ERROR}}</span>
+            <span class="pill">HIGH: {{stats.severityBuckets.HIGH}}</span>
+            <span class="pill">MEDIUM: {{stats.severityBuckets.MEDIUM}}</span>
+            <span class="pill">WARNING: {{stats.severityBuckets.WARNING}}</span>
+            <span class="pill">LOW: {{stats.severityBuckets.LOW}}</span>
+            <span class="pill">INFO: {{stats.severityBuckets.INFO}}</span>
           </div>
         </div>
       </div>
+    </div>
 
-      <!-- AI Summary -->
-      <div class="card">
-        <div class="section-title-line">
-          <h2>AI Summary / AI 总结</h2>
-        </div>
-        <div style="font-size: 12px; color: #777; margin-bottom: 6px">
-          说明：由本地 LLM 根据 Semgrep
-          结果与代码改动自动生成的整体说明，<b>上方为中文总结</b>，可展开查看英文原文。
-        </div>
+    <!-- ============ 修改项清单 ============ -->
+    <div class="card">
+      <h2>Changed Items / 修改项清单</h2>
 
-        {{#llm.summary_zh}}
-        <!-- 有中文 summary，优先展示中文 -->
-        <pre>{{{llm.summary_zh}}}</pre>
-        {{/llm.summary_zh}} {{^llm.summary_zh}}
-        <!-- 没有中文，就退回英文或旧的 summary 字段 -->
-        {{#llm.summary_en}}
-        <pre>{{{llm.summary_en}}}</pre>
-        {{/llm.summary_en}} {{^llm.summary_en}} {{#llm.summary}}
-        <pre>{{{llm.summary}}}</pre>
-        {{/llm.summary}} {{^llm.summary}}
-        <div class="ok-message">No AI summary available, raw model output:</div>
-        <pre>{{{llm}}}</pre>
-        {{/llm.summary}} {{/llm.summary_en}} {{/llm.summary_zh}}
-        {{#llm.summary_en}}
-        <details style="margin-top: 8px; font-size: 12px; color: #555">
-          <summary>显示英文原文 / Show English Original</summary>
-          <pre style="margin-top: 6px">{{{llm.summary_en}}}</pre>
+      {{#hasChanges}}
+      <table>
+        <thead>
+          <tr>
+            <th>类型</th>
+            <th>文件</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#changeItems}}
+          <tr>
+            <td><span class="badge {{status}}">{{status}}</span></td>
+            <td>
+              {{#isRename}} {{oldFile}} → {{file}} {{/isRename}} {{^isRename}}
+              {{file}} {{/isRename}}
+            </td>
+          </tr>
+          {{/changeItems}}
+        </tbody>
+      </table>
+      {{/hasChanges}} {{^hasChanges}}
+      <div class="empty">未检测到分支间代码差异。</div>
+      {{/hasChanges}}
+    </div>
+
+    <!-- ============ AI Summary ============ -->
+    <div class="card">
+      <h2>AI Summary / AI 总结</h2>
+      <p>{{llm.summary_zh}}</p>
+
+      <details>
+        <summary>显示英文原文 / Show English Original</summary>
+        <pre>{{llm.summary_en}}</pre>
+      </details>
+    </div>
+
+    <!-- ============ 逐文件 AI 分析 + diff 代码块 ============ -->
+    <div class="card">
+      <h2>AI File Review / 逐文件 AI 分析（含改动代码块）</h2>
+
+      {{#hasAiItems}} {{#llm.items}}
+      <div class="ai-item">
+        <strong>{{file}}</strong>（{{status}}）<br />
+        <p>{{what_changed_zh}}</p>
+        <p class="ai-risk">风险：{{risk_zh}}</p>
+
+        <ul class="ai-suggest">
+          {{#suggestions_zh}}
+          <li>{{.}}</li>
+          {{/suggestions_zh}}
+        </ul>
+
+        {{#diff}}
+        <details>
+          <summary>查看该文件改动代码块 / View diff</summary>
+          <pre>{{diff}}</pre>
         </details>
-        {{/llm.summary_en}}
+        {{/diff}} {{^diff}}
+        <div class="empty">
+          未匹配到该文件 diff（可能是重命名/路径不一致）。
+        </div>
+        {{/diff}}
+      </div>
+      {{/llm.items}} {{/hasAiItems}} {{^hasAiItems}}
+      <div class="empty">未生成逐文件 AI 分析。</div>
+      {{/hasAiItems}}
+    </div>
+
+    <!-- ============ 组员提交统计 ============ -->
+    <div class="card">
+      <h2>Author Stats / 组员提交统计</h2>
+
+      {{#hasAuthorStats}}
+      <table>
+        <thead>
+          <tr>
+            <th>作者</th>
+            <th>Email</th>
+            <th>提交次数</th>
+            <th>新增行</th>
+            <th>删除行</th>
+            <th>影响文件数</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#authorStats}}
+          <tr>
+            <td>{{name}}</td>
+            <td>{{email}}</td>
+            <td>{{commits}}</td>
+            <td>{{add}}</td>
+            <td>{{del}}</td>
+            <td>{{fileCount}}</td>
+          </tr>
+          {{/authorStats}}
+        </tbody>
+      </table>
+      {{/hasAuthorStats}} {{^hasAuthorStats}}
+      <div class="empty">未获取到作者提交信息。</div>
+      {{/hasAuthorStats}}
+    </div>
+
+    <!-- ============ Semgrep ============ -->
+    <div class="card">
+      <h2>Semgrep Findings / 规则扫描结果</h2>
+
+      {{#hasSemgrep}}
+      <table>
+        <thead>
+          <tr>
+            <th>文件</th>
+            <th>行</th>
+            <th>严重性</th>
+            <th>规则</th>
+            <th>说明</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#semgrepFindings}}
+          <tr>
+            <td>{{path}}</td>
+            <td>{{line}}</td>
+            <td>{{severity}}</td>
+            <td>{{rule_id}}</td>
+            <td>{{message}}</td>
+          </tr>
+          {{/semgrepFindings}}
+        </tbody>
+      </table>
+      {{/hasSemgrep}} {{^hasSemgrep}}
+      <div class="empty">未命中任何 Semgrep 规则。</div>
+      {{/hasSemgrep}}
+
+      <details>
+        <summary>Raw Semgrep JSON（调试用，点击展开/收起）</summary>
+        <pre>{{semgrepRaw}}</pre>
+      </details>
+    </div>
+
+    <!-- ============ 全量 Diff（兜底） ============ -->
+    <div class="card">
+      <h2>All Diff Blocks / 全量改动代码块（兜底）</h2>
+      <div class="subtle">
+        说明：如果逐文件 AI 匹配不到 diff，可在这里按文件查看完整 diff。
       </div>
 
-      <!-- LLM Issues -->
-      <div class="card">
-        <div class="section-title-line">
-          <h2>LLM Issues / AI 发现的问题</h2>
-          <span class="count-pill">{{stats.llmIssueCount}} items</span>
-        </div>
-        <div style="font-size: 12px; color: #777; margin-bottom: 6px">
-          说明：LLM
-          在综合静态规则与代码改动后归纳的重点问题和建议，适合放在评审备注里。
-        </div>
-
-        {{#hasLlmIssues}} {{#llmIssues}}
-        <div class="issue-item">
-          <div class="issue-header">
-            <div>
-              {{#severity}}
-              <span class="badge badge-high">{{severity}}</span>
-              {{/severity}} {{^severity}}
-              <span class="badge badge-info">AI</span>
-              {{/severity}}
-            </div>
-          </div>
-          {{#path}}
-          <div class="issue-path">{{path}}{{#line}}:{{line}}{{/line}}</div>
-          {{/path}}
-          <div class="issue-message">{{message}}</div>
-          {{#suggestion}}
-          <div class="issue-suggestion">
-            修复建议 / Suggestion: {{suggestion}}
-          </div>
-          {{/suggestion}}
-        </div>
-        {{/llmIssues}} {{/hasLlmIssues}} {{^hasLlmIssues}}
-        <div class="ok-message">
-          No LLM-detected issues. / AI 未发现明显问题。
-        </div>
-        {{/hasLlmIssues}}
-      </div>
-
-      <!-- Semgrep Findings -->
-      <div class="card">
-        <div class="section-title-line">
-          <h2>Semgrep Findings / 规则扫描结果</h2>
-          <span class="count-pill">{{stats.semgrepCount}} items</span>
-        </div>
-        <div style="font-size: 12px; color: #777; margin-bottom: 6px">
-          说明：基于 Semgrep 官方规则集
-          <code>p/default</code> 的静态扫描结果，可直接定位到具体文件与行号。
-        </div>
-
-        {{#hasSemgrep}} {{#semgrepFindings}}
-        <div
-          class="issue-item"
-          style="border-left-color: #ff9800; background: #fff9e6"
-        >
-          <div class="issue-header">
-            <div>
-              <span class="badge badge-medium">{{severity}}</span>
-              <span style="font-size: 11px; color: #777; margin-left: 4px"
-                >{{rule_id}}</span
-              >
-            </div>
-          </div>
-          <div class="issue-path">{{path}}{{#line}}:{{line}}{{/line}}</div>
-          <div class="issue-message">{{message}}</div>
-        </div>
-        {{/semgrepFindings}} {{/hasSemgrep}} {{^hasSemgrep}}
-        <div class="ok-message">
-          No Semgrep findings. / 未命中任何规则告警。
-        </div>
-        {{/hasSemgrep}}
-
-        <h2>Raw Semgrep JSON (for debugging) / 原始 Semgrep JSON（调试用）</h2>
-
-        <details class="raw-json-block">
-          <summary>展开查看原始 JSON / Show Raw JSON</summary>
-          <pre class="code-block">{{{semgrepRaw}}}</pre>
-        </details>
-      </div>
+      {{#hasDiffBlocks}} {{#diffBlocks}}
+      <details>
+        <summary>{{file}}</summary>
+        <pre>{{text}}</pre>
+      </details>
+      {{/diffBlocks}} {{/hasDiffBlocks}} {{^hasDiffBlocks}}
+      <div class="empty">未生成 diff（可能没有改动或 git diff 失败）。</div>
+      {{/hasDiffBlocks}}
     </div>
   </body>
 </html>

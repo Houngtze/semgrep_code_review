@@ -1,0 +1,3966 @@
+diff --git a/src/lang/en.js b/src/lang/en.js
+index f68d4e01..23faeb67 100644
+--- a/src/lang/en.js
++++ b/src/lang/en.js
+@@ -217,6 +217,13 @@ export default {
+       tip: "Tip",
+       warning: "Warning",
+       error: "Error",
++      yuan: "¥",
++      notFound: "Not Found",
++      data: "Data",
++      add: "Add",
++      finish: "Finish",
++      up: "Up",
++      down: "Down",
+     },
+     // SPU Management
+     spu: {
+@@ -324,5 +331,280 @@ export default {
+       batchModifyResult:
+         "Batch modified {total} SKU info, {success} succeeded, {fail} failed",
+     },
++    // Category Management
++    category: {
++      title: "Category Management",
++      entity: {
++        title: "Entity Category",
++        addFirstCategory: "Add First Level Category",
++        searchPlaceholder: "Please enter category name to search",
++        categoryName: "Category Name",
++        categoryCode: "Category Code",
++        categoryEdit: "Category Edit",
++        add: "Add",
++        edit: "Edit",
++        delete: "Delete",
++        enabled: "Enabled",
++        disabled: "Disabled",
++        confirmDelete: "Are you sure to delete this category?",
++        deleteSuccess: "Deleted successfully",
++        saveSuccess: "Saved successfully",
++        addSuccess: "Added successfully",
++        modifySuccess: "Modified successfully",
++      },
++      virtual: {
++        title: "Virtual Category",
++        addFirstCategory: "Add First Level Category",
++        searchPlaceholder: "Please enter category name to search",
++        categoryName: "Category Name",
++        categoryCode: "Category Code",
++        categoryEdit: "Category Edit",
++        add: "Add",
++        edit: "Edit",
++        delete: "Delete",
++        enabled: "Enabled",
++        disabled: "Disabled",
++        confirmDelete: "Are you sure to delete this category?",
++        deleteSuccess: "Deleted successfully",
++        saveSuccess: "Saved successfully",
++        addSuccess: "Added successfully",
++        modifySuccess: "Modified successfully",
++        refreshCache: "Refresh Category Cache",
++        syncCategory: "Sync Category",
++        syncSuccess:
++          "Category sync successful, please wait 1~2 minutes before refreshing. Do not repeat sync operation",
++      },
++    },
++    // Insourcing Management
++    insourcing: {
++      company: {
++        title: "Insourcing Company Management",
++        companyName: "Company Name",
++        companyCode: "Company Code",
++        search: "Search",
++        add: "Add",
++        edit: "Edit",
++        delete: "Delete",
++        employeeManagement: "Employee Management",
++        productManagement: "Product Management",
++        enabled: "Enabled",
++        disabled: "Disabled",
++        createTime: "Create Time",
++        updateTime: "Update Time",
++        confirmDelete: "Are you sure to delete this company?",
++        deleteSuccess: "Deleted successfully",
++        addSuccess: "Added successfully",
++        modifySuccess: "Modified successfully",
++        inputCompanyName: "Please enter company name",
++        inputCompanyCode: "Please enter company code",
++        selectStatus: "Please select status",
++        status: "Status",
++      },
++      phone: {
++        title: "Employee Management",
++        name: "Name",
++        phone: "Phone",
++        search: "Search",
++        add: "Add",
++        edit: "Edit",
++        delete: "Delete",
++        importExcel: "Import Excel",
++        exportExcel: "Export Excel",
++        downloadTemplate: "Download Template",
++        enabled: "Enabled",
++        disabled: "Disabled",
++        createTime: "Create Time",
++        updateTime: "Update Time",
++        confirmDelete: "Are you sure to delete this employee?",
++        deleteSuccess: "Deleted successfully",
++        addSuccess: "Added successfully",
++        modifySuccess: "Modified successfully",
++        inputName: "Please enter name",
++        inputPhone: "Please enter phone",
++        selectStatus: "Please select status",
++        selectFile: "Please select file to import",
++        importSuccess: "Imported successfully",
++        importFailed: "Import failed",
++        exportSuccess: "Exported successfully",
++        exportFailed: "Export failed",
++      },
++      sku: {
++        title: "Product Management",
++        skuCode: "SKU Code",
++        skuName: "SKU Name",
++        internalPrice: "Internal Price",
++        search: "Search",
++        add: "Add",
++        edit: "Edit",
++        delete: "Delete",
++        importExcel: "Import Excel",
++        exportExcel: "Export Excel",
++        downloadTemplate: "Download Template",
++        enabled: "Enabled",
++        disabled: "Disabled",
++        createTime: "Create Time",
++        updateTime: "Update Time",
++        confirmDelete: "Are you sure to delete this product?",
++        deleteSuccess: "Deleted successfully",
++        addSuccess: "Added successfully",
++        modifySuccess: "Modified successfully",
++        inputSkuCode: "Please enter SKU code",
++        inputInternalPrice: "Please enter internal price",
++        selectStatus: "Please select status",
++        selectFile: "Please select file to import",
++        importSuccess: "Imported successfully",
++        importFailed: "Import failed",
++        exportSuccess: "Exported successfully",
++        exportFailed: "Export failed",
++        priceFormatError: "Please enter a valid number (max 2 decimal places)",
++      },
++    },
++    // Supplier Management
++    supplier: {
++      management: {
++        title: "Supplier Management",
++        supplierName: "Supplier",
++        supplierCode: "Supplier Code",
++        search: "Search",
++        add: "Add",
++        edit: "Edit",
++        enabled: "Enabled",
++        disabled: "Disabled",
++        settled: "Settled",
++        notSettled: "Not Settled",
++        pickupType: "Pickup Type",
++        pickupTypeAll: "All Supported",
++        pickupTypeExpress: "Express Delivery",
++        pickupTypeStore: "Store Pickup",
++        storeList: "Supported Stores",
++        selfCompanyName: "Our Company Name",
++        supplierCompanyName: "Supplier Company Name",
++        partnerContact: "Partner Contact",
++        contractPeriod: "Contract Period",
++        contractLongTerm: "Long Term",
++        contractTo: "To",
++        createTime: "Create Time",
++        updateTime: "Update Time",
++        inputSupplierName: "Please enter supplier name",
++        selectStatus: "Please select status",
++        selectSettle: "Please select settlement status",
++        selectPickupType: "Please select pickup type",
++        selectStore: "Please select pickup store",
++        inputSelfCompanyName: "Please enter our company name",
++        inputSupplierCompanyName: "Please enter supplier company name",
++        inputPartnerContact: "Please enter partner contact",
++        selectContractBeginTime: "Please select start time",
++        selectContractEndTime: "Please select end time",
++        saveSuccess: "Saved successfully",
++        saveFailed: "Save failed",
++        supplierIdError: "Supplier ID error",
++      },
++      store: {
++        title: "Store Management",
++        storeName: "Pickup Point Name",
++        storeAddress: "Detailed Address",
++        pickupTime: "Pickup Time",
++        search: "Search",
++        add: "Add",
++        edit: "Edit",
++        delete: "Delete",
++        queryPickupTime: "Query Pickup Time",
++        enabled: "Enabled",
++        disabled: "Disabled",
++        createTime: "Create Time",
++        updateTime: "Update Time",
++        startTime: "Start Time",
++        endTime: "End Time",
++        addTime: "Add Time",
++        deleteTime: "Delete",
++        addStore: "Add Store",
++        editStore: "Edit Store",
++        confirmDelete: "Are you sure to delete this pickup store?",
++        deleteSuccess: "Deleted successfully",
++        addSuccess: "Added successfully",
++        modifySuccess: "Modified successfully",
++        inputStoreName: "Please enter pickup store name",
++        inputStoreAddress: "Please enter detailed address",
++        selectStatus: "Please select status",
++        startTimePlaceholder: "Start Time",
++        endTimePlaceholder: "End Time",
++        atLeastOneTime: "At least one time period must be retained",
++        noPickupTime: "This store has no pickup time",
++      },
++      goods: {
++        title: "Supplier Goods",
++        selection: {
++          title: "Supplier Selection",
++          supplier: "Supplier",
++          skuCode: "SKU Code",
++          skuName: "SKU Name",
++          search: "Search",
++          add: "Add to Temp SKU",
++          addToGroup: "Add to Group",
++          importExcel: "Import Excel",
++          exportExcel: "Export Excel",
++          downloadTemplate: "Download Template",
++          selectSupplier: "Please select supplier",
++          selectFile: "Please select file to import",
++          importSuccess: "Imported successfully",
++          importFailed: "Import failed",
++          exportSuccess: "Exported successfully",
++          exportFailed: "Export failed",
++          addSuccess: "Added successfully",
++          addFailed: "Add failed",
++        },
++        list: {
++          title: "Supplier Goods List",
++          supplier: "Supplier",
++          skuCode: "SKU Code",
++          skuName: "SKU Name",
++          search: "Search",
++          add: "Add",
++          edit: "Edit",
++          delete: "Delete",
++          batchDelete: "Batch Delete",
++          join: "Join",
++          importExcel: "Import Excel",
++          exportExcel: "Export Excel",
++          downloadTemplate: "Download Template",
++          selectSupplier: "Please select supplier",
++          selectFile: "Please select file to import",
++          importSuccess: "Imported successfully",
++          importFailed: "Import failed",
++          exportSuccess: "Exported successfully",
++          exportFailed: "Export failed",
++          addSuccess: "Added successfully",
++          modifySuccess: "Modified successfully",
++          deleteSuccess: "Deleted successfully",
++          joinSuccess: "Joined successfully",
++          confirmDelete: "Are you sure to delete this product?",
++          confirmBatchDelete: "Are you sure to batch delete selected products?",
++        },
++        add: {
++          title: "Supplier Goods Edit",
++          add: "Add",
++          edit: "Edit",
++          supplier: "Supplier",
++          skuCode: "SKU Code",
++          skuName: "SKU Name",
++          skuImage: "SKU Image",
++          internalPrice: "Internal Price",
++          productIntroduction: "Product Introduction",
++          productDetails: "Product Details",
++          specifications: "Specifications",
++          attributes: "Attributes",
++          save: "Save",
++          cancel: "Cancel",
++          saveSuccess: "Saved successfully",
++          saveFailed: "Save failed",
++          uploadSuccess: "Uploaded successfully",
++          uploadFailed: "Upload failed",
++          selectSupplier: "Please select supplier",
++          inputSkuCode: "Please enter SKU code",
++          inputSkuName: "Please enter SKU name",
++          inputInternalPrice: "Please enter internal price",
++        },
++      },
++    },
+   },
+ };
+diff --git a/src/lang/zh.js b/src/lang/zh.js
+index 3806e2c7..2aea0851 100644
+--- a/src/lang/zh.js
++++ b/src/lang/zh.js
+@@ -213,6 +213,13 @@ export default {
+       tip: "提示",
+       warning: "警告",
+       error: "错误",
++      yuan: "元",
++      notFound: "未找到",
++      data: "数据",
++      add: "新增",
++      finish: "完成",
++      up: "上移",
++      down: "下移",
+     },
+     // SPU管理
+     spu: {
+@@ -315,5 +322,279 @@ export default {
+       batchModifyResult:
+         "批量修改{total}个sku信息，成功{success}个，{fail}个失败",
+     },
++    // 分类管理
++    category: {
++      title: "分类管理",
++      entity: {
++        title: "实体分类",
++        addFirstCategory: "新增一级类目",
++        searchPlaceholder: "请输入类目名称搜索",
++        categoryName: "类目名称",
++        categoryCode: "类目编码",
++        categoryEdit: "类目编辑",
++        add: "新增",
++        edit: "编辑",
++        delete: "删除",
++        enabled: "启用",
++        disabled: "禁用",
++        confirmDelete: "确定删除该分类?",
++        deleteSuccess: "删除成功",
++        saveSuccess: "保存成功",
++        addSuccess: "新增成功",
++        modifySuccess: "修改成功",
++      },
++      virtual: {
++        title: "虚拟分类",
++        addFirstCategory: "新增一级类目",
++        searchPlaceholder: "请输入类目名称搜索",
++        categoryName: "类目名称",
++        categoryCode: "类目编码",
++        categoryEdit: "类目编辑",
++        add: "新增",
++        edit: "编辑",
++        delete: "删除",
++        enabled: "启用",
++        disabled: "禁用",
++        confirmDelete: "确定删除该分类?",
++        deleteSuccess: "删除成功",
++        saveSuccess: "保存成功",
++        addSuccess: "新增成功",
++        modifySuccess: "修改成功",
++        refreshCache: "刷新类目缓存",
++        syncCategory: "同步类目",
++        syncSuccess: "类目同步成功，请等待1~2分钟后刷新。切勿重复同步操作",
++      },
++    },
++    // 内购管理
++    insourcing: {
++      company: {
++        title: "内购公司管理",
++        companyName: "公司名称",
++        companyCode: "公司编码",
++        search: "查询",
++        add: "新增",
++        edit: "修改",
++        delete: "删除",
++        employeeManagement: "员工管理",
++        productManagement: "商品管理",
++        enabled: "已启用",
++        disabled: "已禁用",
++        createTime: "创建时间",
++        updateTime: "修改时间",
++        confirmDelete: "是否删除该公司管理?",
++        deleteSuccess: "删除成功",
++        addSuccess: "新增成功",
++        modifySuccess: "修改成功",
++        inputCompanyName: "请输入公司名称",
++        inputCompanyCode: "请输入公司编码",
++        selectStatus: "请选择状态",
++        status: "状态",
++      },
++      phone: {
++        title: "员工管理",
++        name: "姓名",
++        phone: "电话",
++        search: "查询",
++        add: "新增",
++        edit: "修改",
++        delete: "删除",
++        importExcel: "导入Excel",
++        exportExcel: "导出Excel",
++        downloadTemplate: "下载订单模板",
++        enabled: "已启用",
++        disabled: "已禁用",
++        createTime: "创建时间",
++        updateTime: "修改时间",
++        confirmDelete: "是否删除该员工管理?",
++        deleteSuccess: "删除成功",
++        addSuccess: "新增成功",
++        modifySuccess: "修改成功",
++        inputName: "请输入姓名",
++        inputPhone: "请输入电话",
++        selectStatus: "请选择状态",
++        selectFile: "请选择要导入的文件",
++        importSuccess: "导入成功",
++        importFailed: "导入失败",
++        exportSuccess: "导出成功",
++        exportFailed: "导出文件出错",
++      },
++      sku: {
++        title: "商品管理",
++        skuCode: "SKU编码",
++        skuName: "SKU名称",
++        internalPrice: "内部价",
++        search: "查询",
++        add: "新增",
++        edit: "修改",
++        delete: "删除",
++        importExcel: "导入Excel",
++        exportExcel: "导出Excel",
++        downloadTemplate: "下载订单模板",
++        enabled: "已启用",
++        disabled: "已禁用",
++        createTime: "创建时间",
++        updateTime: "修改时间",
++        confirmDelete: "是否删除该商品管理?",
++        deleteSuccess: "删除成功",
++        addSuccess: "新增成功",
++        modifySuccess: "修改成功",
++        inputSkuCode: "请输入SKU编码",
++        inputInternalPrice: "请输入内部价",
++        selectStatus: "请选择状态",
++        selectFile: "请选择要导入的文件",
++        importSuccess: "导入成功",
++        importFailed: "导入失败",
++        exportSuccess: "导出成功",
++        exportFailed: "导出文件出错",
++        priceFormatError: "请输入正确数字（只能保留两位小数）",
++      },
++    },
++    // 供应商管理
++    supplier: {
++      management: {
++        title: "发货仓管理",
++        supplierName: "发货仓",
++        supplierCode: "发货仓标识",
++        search: "查询",
++        add: "新增",
++        edit: "编辑",
++        enabled: "已启用",
++        disabled: "已禁用",
++        settled: "已入驻",
++        notSettled: "未入驻",
++        pickupType: "收货类型",
++        pickupTypeAll: "全部支持",
++        pickupTypeExpress: "快递邮寄",
++        pickupTypeStore: "到店自提",
++        storeList: "支持门店",
++        selfCompanyName: "我司主体名称",
++        supplierCompanyName: "供应商主体名称",
++        partnerContact: "合作方联系人",
++        contractPeriod: "合同有效期",
++        contractLongTerm: "长期",
++        contractTo: "至",
++        createTime: "创建时间",
++        updateTime: "修改时间",
++        inputSupplierName: "请输入发货仓名称",
++        selectStatus: "请选择状态",
++        selectSettle: "请选择是否入驻",
++        selectPickupType: "请选择收货类型",
++        selectStore: "请选择自提门店",
++        inputSelfCompanyName: "请输入我司主体名称",
++        inputSupplierCompanyName: "请输入供应商主体名称",
++        inputPartnerContact: "请输入合作方联系人",
++        selectContractBeginTime: "请选择开始时间",
++        selectContractEndTime: "请选择结束时间",
++        saveSuccess: "保存成功",
++        saveFailed: "保存失败",
++        supplierIdError: "发货仓id出错",
++      },
++      store: {
++        title: "门店管理",
++        storeName: "自提点名称",
++        storeAddress: "详细地址",
++        pickupTime: "自提时间",
++        search: "查询",
++        add: "新增",
++        edit: "编辑",
++        delete: "删除",
++        queryPickupTime: "查询自提时间",
++        enabled: "启用",
++        disabled: "禁用",
++        createTime: "创建时间",
++        updateTime: "修改时间",
++        startTime: "开始时间",
++        endTime: "结束时间",
++        addTime: "新增时间",
++        deleteTime: "删除",
++        addStore: "门店新增",
++        editStore: "门店编辑",
++        confirmDelete: "是否删除该自提门店?",
++        deleteSuccess: "删除成功",
++        addSuccess: "新增成功",
++        modifySuccess: "修改成功",
++        inputStoreName: "请输入自提门店名称",
++        inputStoreAddress: "请输入详细地址",
++        selectStatus: "请选择状态",
++        startTimePlaceholder: "起始时间",
++        endTimePlaceholder: "结束时间",
++        atLeastOneTime: "至少保留一个时间段",
++        noPickupTime: "该门店暂无自提时间",
++      },
++      goods: {
++        title: "供应商商品",
++        selection: {
++          title: "供应商选品",
++          supplier: "供应商",
++          skuCode: "SKU编码",
++          skuName: "SKU名称",
++          search: "查询",
++          add: "添加到临时SKU",
++          addToGroup: "添加到分组",
++          importExcel: "导入Excel",
++          exportExcel: "导出Excel",
++          downloadTemplate: "下载模板",
++          selectSupplier: "请选择供应商",
++          selectFile: "请选择要导入的文件",
++          importSuccess: "导入成功",
++          importFailed: "导入失败",
++          exportSuccess: "导出成功",
++          exportFailed: "导出文件出错",
++          addSuccess: "添加成功",
++          addFailed: "添加失败",
++        },
++        list: {
++          title: "供应商商品列表",
++          supplier: "供应商",
++          skuCode: "SKU编码",
++          skuName: "SKU名称",
++          search: "查询",
++          add: "新增",
++          edit: "编辑",
++          delete: "删除",
++          batchDelete: "批量删除",
++          join: "加入",
++          importExcel: "导入Excel",
++          exportExcel: "导出Excel",
++          downloadTemplate: "下载模板",
++          selectSupplier: "请选择供应商",
++          selectFile: "请选择要导入的文件",
++          importSuccess: "导入成功",
++          importFailed: "导入失败",
++          exportSuccess: "导出成功",
++          exportFailed: "导出文件出错",
++          addSuccess: "新增成功",
++          modifySuccess: "修改成功",
++          deleteSuccess: "删除成功",
++          joinSuccess: "加入成功",
++          confirmDelete: "确定删除该商品?",
++          confirmBatchDelete: "确定批量删除选中的商品?",
++        },
++        add: {
++          title: "供应商商品编辑",
++          add: "新增",
++          edit: "编辑",
++          supplier: "供应商",
++          skuCode: "SKU编码",
++          skuName: "SKU名称",
++          skuImage: "SKU图片",
++          internalPrice: "内部价",
++          productIntroduction: "商品介绍",
++          productDetails: "商品详情",
++          specifications: "规格",
++          attributes: "属性",
++          save: "保存",
++          cancel: "取消",
++          saveSuccess: "保存成功",
++          saveFailed: "保存失败",
++          uploadSuccess: "上传成功",
++          uploadFailed: "上传失败",
++          selectSupplier: "请选择供应商",
++          inputSkuCode: "请输入SKU编码",
++          inputSkuName: "请输入SKU名称",
++          inputInternalPrice: "请输入内部价",
++        },
++      },
++    },
+   },
+ };
+diff --git a/src/pages/product/category/entity.vue b/src/pages/product/category/entity.vue
+index ef0ea0e7..81f843b6 100644
+--- a/src/pages/product/category/entity.vue
++++ b/src/pages/product/category/entity.vue
+@@ -3,12 +3,12 @@
+     <div class="header-actions">
+       <el-button class="add-first" @click="add" type="primary">
+         <i class="el-icon-plus"></i>
+-        <span>新增一级类目</span>
++        <span>{{ $t("product.category.entity.addFirstCategory") }}</span>
+       </el-button>
+       <div class="search-box">
+         <el-input
+           v-model="searchKeyword"
+-          placeholder="请输入类目名称搜索"
++          :placeholder="$t('product.category.entity.searchPlaceholder')"
+           clearable
+           @keyup.enter.native="handleSearch"
+           class="search-input"
+@@ -46,29 +46,29 @@
+               <i
+                 class="el-icon-plus"
+                 @click.stop="() => add(data)"
+-                alt="新增"
++                :alt="$t('product.category.entity.add')"
+                 v-if="node.level != 3"
+               ></i>
+               <i
+                 class="el-icon-edit"
+                 @click.stop="() => edit(data, node.level)"
+-                alt="编辑"
++                :alt="$t('product.category.entity.edit')"
+               ></i>
+               <i
+                 class="el-icon-delete"
+                 @click.stop="() => del(data)"
+-                alt="删除"
++                :alt="$t('product.category.entity.delete')"
+               ></i>
+               <i
+                 class="el-icon-check"
+                 @click.stop="() => able(data)"
+-                alt="启用"
++                :alt="$t('product.category.entity.enabled')"
+                 v-if="data.status === 1"
+               ></i>
+               <i
+                 class="el-icon-close"
+                 @click.stop="() => disable(data)"
+-                alt="禁用"
++                :alt="$t('product.category.entity.disabled')"
+                 v-if="data.status === 0"
+               ></i>
+             </span>
+@@ -80,7 +80,7 @@
+     <el-dialog
+       :visible.sync="isShowInfoDialog"
+       class="dialog"
+-      title="类目编辑"
++      :title="$t('product.category.entity.categoryEdit')"
+       append-to-body
+       :close-on-click-modal="false"
+     >
+@@ -90,16 +90,22 @@
+         label-width="140px"
+         :rules="rules"
+       >
+-        <el-form-item label="上级类目" prop="parentName">
++        <el-form-item
++          :label="$t('product.category.entity.categoryName')"
++          prop="parentName"
++        >
+           <el-input
+-            placeholder="请输入上级类目"
++            :placeholder="$t('product.category.entity.categoryName')"
+             v-model="attrData.parentName"
+             disabled
+           ></el-input>
+         </el-form-item>
+-        <el-form-item label="类目名称" prop="name">
++        <el-form-item
++          :label="$t('product.category.entity.categoryName')"
++          prop="name"
++        >
+           <el-input
+-            placeholder="请输入类目名称"
++            :placeholder="$t('product.category.entity.categoryName')"
+             v-model="attrData.name"
+           ></el-input>
+         </el-form-item>
+@@ -109,14 +115,28 @@
+             v-model="attrData.sortNum"
+           ></el-input>
+         </el-form-item>
+-        <el-form-item label="状态" prop="status">
+-          <el-select placeholder="请选择" v-model="attrData.status">
+-            <el-option :value="0" label="启用">启用</el-option>
+-            <el-option :value="1" label="禁用">禁用</el-option>
++        <el-form-item :label="$t('product.common.status')" prop="status">
++          <el-select
++            :placeholder="$t('product.common.pleaseSelect')"
++            v-model="attrData.status"
++          >
++            <el-option
++              :value="0"
++              :label="$t('product.category.entity.enabled')"
++              >{{ $t("product.category.entity.enabled") }}</el-option
++            >
++            <el-option
++              :value="1"
++              :label="$t('product.category.entity.disabled')"
++              >{{ $t("product.category.entity.disabled") }}</el-option
++            >
+           </el-select>
+         </el-form-item>
+-        <el-form-item label="渠道" prop="channel">
+-          <el-select placeholder="请选择" v-model="attrData.channel">
++        <el-form-item :label="$t('product.common.channel')" prop="channel">
++          <el-select
++            :placeholder="$t('product.common.pleaseSelect')"
++            v-model="attrData.channel"
++          >
+             <el-option
+               v-for="item in channelOptions"
+               :key="item.channel"
+@@ -141,7 +161,9 @@
+         </el-form-item>
+       </el-form>
+       <div class="dialog-footer">
+-        <el-button type="primary" @click="submit">保存</el-button>
++        <el-button type="primary" @click="submit">{{
++          $t("product.common.save")
++        }}</el-button>
+       </div>
+     </el-dialog>
+   </div>
+@@ -307,7 +329,10 @@ export default {
+             let grossList = res.data.data[0].grossProfit1List;
+             if (!grossList) {
+               return this.$message.error(
+-                `字段grossProfit1List数据缺失，id：${data.id}`
++                this.$t("product.common.error") +
++                  `: grossProfit1List ${this.$t(
++                    "product.common.failed"
++                  )}, id: ${data.id}`
+               );
+             }
+ 
+@@ -348,11 +373,15 @@ export default {
+      * @param {Object} data - 类目数据
+      */
+     del(data) {
+-      this.$confirm("确定要删除吗?", "提示", {
+-        confirmButtonText: "确定",
+-        cancelButtonText: "取消",
+-        type: "warning",
+-      }).then(() => {
++      this.$confirm(
++        this.$t("product.category.entity.confirmDelete"),
++        this.$t("product.common.tip"),
++        {
++          confirmButtonText: this.$t("product.common.confirm"),
++          cancelButtonText: this.$t("product.common.cancel"),
++          type: "warning",
++        }
++      ).then(() => {
+         this.$api.putEntityStatus(
+           {
+             ids: [data.id],
+@@ -362,7 +391,7 @@ export default {
+           (res) => {
+             if (res.data.result === "success") {
+               this.$message({
+-                message: "修改成功",
++                message: this.$t("product.category.entity.deleteSuccess"),
+                 type: "success",
+               });
+               this.getType().then((res) => {
+@@ -378,11 +407,15 @@ export default {
+      * @param {Object} data - 类目数据
+      */
+     able(data) {
+-      this.$confirm("确定要启用吗?", "启用", {
+-        confirmButtonText: "确定",
+-        cancelButtonText: "取消",
+-        type: "warning",
+-      }).then(() => {
++      this.$confirm(
++        this.$t("product.category.entity.enabled") + "?",
++        this.$t("product.category.entity.enabled"),
++        {
++          confirmButtonText: this.$t("product.common.confirm"),
++          cancelButtonText: this.$t("product.common.cancel"),
++          type: "warning",
++        }
++      ).then(() => {
+         this.$api.putEntityStatus(
+           {
+             ids: [data.id],
+@@ -392,7 +425,7 @@ export default {
+           (res) => {
+             if (res.data.result === "success") {
+               this.$message({
+-                message: "修改成功",
++                message: this.$t("product.category.entity.modifySuccess"),
+                 type: "success",
+               });
+               this.getType().then((res) => {
+@@ -408,11 +441,15 @@ export default {
+      * @param {Object} data - 类目数据
+      */
+     disable(data) {
+-      this.$confirm("确定要禁用吗?", "禁用", {
+-        confirmButtonText: "确定",
+-        cancelButtonText: "取消",
+-        type: "warning",
+-      }).then(() => {
++      this.$confirm(
++        this.$t("product.category.entity.disabled") + "?",
++        this.$t("product.category.entity.disabled"),
++        {
++          confirmButtonText: this.$t("product.common.confirm"),
++          cancelButtonText: this.$t("product.common.cancel"),
++          type: "warning",
++        }
++      ).then(() => {
+         this.$api.putEntityStatus(
+           {
+             ids: [data.id],
+@@ -422,7 +459,7 @@ export default {
+           (res) => {
+             if (res.data.result === "success") {
+               this.$message({
+-                message: "修改成功",
++                message: this.$t("product.category.entity.modifySuccess"),
+                 type: "success",
+               });
+               this.getType().then((res) => {
+@@ -470,7 +507,10 @@ export default {
+      */
+     async handleSearch() {
+       if (!this.searchKeyword || !this.searchKeyword.trim()) {
+-        this.$message.warning("请输入搜索关键词");
++        this.$message.warning(
++          this.$t("product.common.pleaseInput") +
++            this.$t("product.category.entity.searchPlaceholder")
++        );
+         return;
+       }
+ 
+@@ -496,7 +536,12 @@ export default {
+       }
+ 
+       if (!this.searchResult) {
+-        this.$message.info("未找到匹配的类目");
++        this.$message.info(
++          this.$t("product.category.entity.searchPlaceholder").replace(
++            "搜索",
++            ""
++          ) + this.$t("product.common.notFound") || "未找到匹配的类目"
++        );
+       }
+     },
+     /**
+@@ -658,7 +703,10 @@ export default {
+                 this.$message.error("毛利安全线数值应为0~100的整数");
+                 return false;
+               }
+-              if (!numberRegex.test(this.grossData[i].cate)) {
++              if (
++                this.grossData[i].cate &&
++                !numberRegex.test(this.grossData[i].cate)
++              ) {
+                 this.$message.error("类目毛利数值应为0~100的整数");
+                 return false;
+               }
+@@ -683,16 +731,24 @@ export default {
+           this.attrData["actionType"] = this.actionType;
+           this.attrData["parentId"] = this.parentId;
+ 
+-          this.$confirm("确定要提交吗？", "提示", {
+-            confirmButtonText: "确定",
+-            cancelButtonText: "取消",
+-            type: "warning",
+-          }).then(() => {
++          this.$confirm(
++            this.$t("product.common.confirm") +
++              this.$t("product.common.submit") +
++              "?",
++            this.$t("product.common.tip"),
++            {
++              confirmButtonText: this.$t("product.common.confirm"),
++              cancelButtonText: this.$t("product.common.cancel"),
++              type: "warning",
++            }
++          ).then(() => {
+             const param = { ...this.attrData };
+             delete param.channel;
+             this.$api.putEntityAttr(param, (res) => {
+               if (res.data.result === "success") {
+-                this.$message.success("保存成功");
++                this.$message.success(
++                  this.$t("product.category.entity.saveSuccess")
++                );
+                 this.isShowInfoDialog = false;
+                 this.getType().then((res) => {
+                   this.infoData = res.data.data;
+diff --git a/src/pages/product/category/virtual.vue b/src/pages/product/category/virtual.vue
+index 69a6ed32..4ba63d49 100644
+--- a/src/pages/product/category/virtual.vue
++++ b/src/pages/product/category/virtual.vue
+@@ -26,12 +26,12 @@
+       <div class="header-actions">
+         <el-button class="add-first" @click="add" type="primary">
+           <i class="el-icon-plus"></i>
+-          <span>新增一级类目</span>
++          <span>{{ $t("product.category.virtual.addFirstCategory") }}</span>
+         </el-button>
+         <div class="search-box">
+           <el-input
+             v-model="searchKeyword"
+-            placeholder="请输入类目名称搜索"
++            :placeholder="$t('product.category.virtual.searchPlaceholder')"
+             clearable
+             @keyup.enter.native="handleSearch"
+             class="search-input"
+@@ -69,29 +69,29 @@
+                 <i
+                   class="el-icon-plus"
+                   @click.stop="() => add(data)"
+-                  alt="新增"
++                  :alt="$t('product.category.virtual.add')"
+                   v-if="node.level != 3"
+                 ></i>
+                 <i
+                   class="el-icon-edit"
+                   @click.stop="() => edit(data, node)"
+-                  alt="编辑"
++                  :alt="$t('product.category.virtual.edit')"
+                 ></i>
+                 <i
+                   class="el-icon-delete"
+                   @click.stop="() => del(data)"
+-                  alt="删除"
++                  :alt="$t('product.category.virtual.delete')"
+                 ></i>
+                 <i
+                   class="el-icon-check"
+                   @click.stop="() => able(data)"
+-                  alt="启用"
++                  :alt="$t('product.category.virtual.enabled')"
+                   v-if="data.status === 1"
+                 ></i>
+                 <i
+                   class="el-icon-close"
+                   @click.stop="() => disable(data)"
+-                  alt="禁用"
++                  :alt="$t('product.category.virtual.disabled')"
+                   v-if="data.status === 0"
+                 ></i>
+               </span>
+@@ -105,7 +105,7 @@
+       :visible.sync="isShowInfoDialog"
+       class="dialog"
+       append-to-body
+-      title="类目编辑"
++      :title="$t('product.category.virtual.categoryEdit')"
+       :close-on-click-modal="false"
+     >
+       <el-form
+@@ -116,16 +116,22 @@
+       >
+         <div class="virtual-form">
+           <div class="left">
+-            <el-form-item label="上级类目" prop="parentName">
++            <el-form-item
++              :label="$t('product.category.virtual.categoryName')"
++              prop="parentName"
++            >
+               <el-input
+-                placeholder="请输入上级类目"
++                :placeholder="$t('product.category.virtual.categoryName')"
+                 v-model="attrData.parentName"
+                 disabled
+               ></el-input>
+             </el-form-item>
+-            <el-form-item label="类目名称" prop="name">
++            <el-form-item
++              :label="$t('product.category.virtual.categoryName')"
++              prop="name"
++            >
+               <el-input
+-                placeholder="请输入类目名称"
++                :placeholder="$t('product.category.virtual.categoryName')"
+                 v-model="attrData.name"
+               ></el-input>
+             </el-form-item>
+@@ -135,10 +141,21 @@
+                 v-model="attrData.sort"
+               ></el-input>
+             </el-form-item>
+-            <el-form-item label="状态" prop="status">
+-              <el-select placeholder="请选择" v-model="attrData.status">
+-                <el-option :value="0" label="启用">启用</el-option>
+-                <el-option :value="1" label="禁用">禁用</el-option>
++            <el-form-item :label="$t('product.common.status')" prop="status">
++              <el-select
++                :placeholder="$t('product.common.pleaseSelect')"
++                v-model="attrData.status"
++              >
++                <el-option
++                  :value="0"
++                  :label="$t('product.category.virtual.enabled')"
++                  >{{ $t("product.category.virtual.enabled") }}</el-option
++                >
++                <el-option
++                  :value="1"
++                  :label="$t('product.category.virtual.disabled')"
++                  >{{ $t("product.category.virtual.disabled") }}</el-option
++                >
+               </el-select>
+             </el-form-item>
+           </div>
+@@ -270,13 +287,21 @@ export default {
+      * 刷新类目缓存
+      */
+     refreshCache() {
+-      this.$confirm("是否确定刷新类目缓存?", "提示", {
+-        confirmButtonText: "确定",
+-        cancelButtonText: "取消",
+-        type: "warning",
+-      }).then(() => {
++      this.$confirm(
++        this.$t("product.common.confirm") +
++          this.$t("product.category.virtual.refreshCache") +
++          "?",
++        this.$t("product.common.tip"),
++        {
++          confirmButtonText: this.$t("product.common.confirm"),
++          cancelButtonText: this.$t("product.common.cancel"),
++          type: "warning",
++        }
++      ).then(() => {
+         this.$api.virtualTypeCacheRefresh({}, (res) => {
+-          this.$message.success(res.data.message);
++          this.$message.success(
++            res.data.message || this.$t("product.common.success")
++          );
+         });
+       });
+     },
+@@ -326,11 +351,17 @@ export default {
+     submit() {
+       this.$refs["attrData"].validate((valid) => {
+         if (valid) {
+-          this.$confirm("确定要提交吗？", "提示", {
+-            confirmButtonText: "确定",
+-            cancelButtonText: "取消",
+-            type: "warning",
+-          }).then(() => {
++          this.$confirm(
++            this.$t("product.common.confirm") +
++              this.$t("product.common.submit") +
++              "?",
++            this.$t("product.common.tip"),
++            {
++              confirmButtonText: this.$t("product.common.confirm"),
++              cancelButtonText: this.$t("product.common.cancel"),
++              type: "warning",
++            }
++          ).then(() => {
+             let param = this.attrData;
+             if (this.actionType === 1) {
+               param.channel = this.appType;
+@@ -338,7 +369,7 @@ export default {
+             this.$api.putVirtualAttr(param, (res) => {
+               if (res.data.result === "success") {
+                 this.$message({
+-                  message: "保存成功",
++                  message: this.$t("product.category.virtual.saveSuccess"),
+                   type: "success",
+                 });
+                 this.isShowInfoDialog = false;
+@@ -402,11 +433,15 @@ export default {
+      * @param {Object} data - 类目数据
+      */
+     del(data) {
+-      this.$confirm("确定要删除吗?", "提示", {
+-        confirmButtonText: "确定",
+-        cancelButtonText: "取消",
+-        type: "warning",
+-      }).then(() => {
++      this.$confirm(
++        this.$t("product.category.virtual.confirmDelete"),
++        this.$t("product.common.tip"),
++        {
++          confirmButtonText: this.$t("product.common.confirm"),
++          cancelButtonText: this.$t("product.common.cancel"),
++          type: "warning",
++        }
++      ).then(() => {
+         this.$api.putVirtualStatus(
+           {
+             ids: [data.id],
+@@ -415,7 +450,7 @@ export default {
+           (res) => {
+             if (res.data.result === "success") {
+               this.$message({
+-                message: "删除成功",
++                message: this.$t("product.category.virtual.deleteSuccess"),
+                 type: "success",
+               });
+               this.getType().then((res) => {
+@@ -431,11 +466,15 @@ export default {
+      * @param {Object} data - 类目数据
+      */
+     able(data) {
+-      this.$confirm("确定要启用吗?", "启用", {
+-        confirmButtonText: "确定",
+-        cancelButtonText: "取消",
+-        type: "warning",
+-      }).then(() => {
++      this.$confirm(
++        this.$t("product.category.virtual.enabled") + "?",
++        this.$t("product.category.virtual.enabled"),
++        {
++          confirmButtonText: this.$t("product.common.confirm"),
++          cancelButtonText: this.$t("product.common.cancel"),
++          type: "warning",
++        }
++      ).then(() => {
+         this.$api.putVirtualStatus(
+           {
+             ids: [data.id],
+@@ -445,7 +484,9 @@ export default {
+           (res) => {
+             if (res.data.result === "success") {
+               this.$message({
+-                message: "启用成功",
++                message:
++                  this.$t("product.category.virtual.enabled") +
++                  this.$t("product.common.success"),
+                 type: "success",
+               });
+               this.getType().then((res) => {
+@@ -461,11 +502,15 @@ export default {
+      * @param {Object} data - 类目数据
+      */
+     disable(data) {
+-      this.$confirm("确定要禁用吗?", "禁用", {
+-        confirmButtonText: "确定",
+-        cancelButtonText: "取消",
+-        type: "warning",
+-      }).then(() => {
++      this.$confirm(
++        this.$t("product.category.virtual.disabled") + "?",
++        this.$t("product.category.virtual.disabled"),
++        {
++          confirmButtonText: this.$t("product.common.confirm"),
++          cancelButtonText: this.$t("product.common.cancel"),
++          type: "warning",
++        }
++      ).then(() => {
+         this.$api.putVirtualStatus(
+           {
+             ids: [data.id],
+@@ -515,7 +560,10 @@ export default {
+      */
+     async handleSearch() {
+       if (!this.searchKeyword || !this.searchKeyword.trim()) {
+-        this.$message.warning("请输入搜索关键词");
++        this.$message.warning(
++          this.$t("product.common.pleaseInput") +
++            this.$t("product.category.virtual.searchPlaceholder")
++        );
+         return;
+       }
+ 
+@@ -541,7 +589,12 @@ export default {
+       }
+ 
+       if (!this.searchResult) {
+-        this.$message.info("未找到匹配的类目");
++        this.$message.info(
++          this.$t("product.category.virtual.searchPlaceholder").replace(
++            "搜索",
++            ""
++          ) + this.$t("product.common.notFound") || "未找到匹配的类目"
++        );
+       }
+     },
+     /**
+@@ -669,10 +722,16 @@ export default {
+      * 同步类目（虚拟类目一键同步爱用）
+      */
+     handSwitch() {
+-      this.$confirm("是否确定进行操作?", "虚拟类目一键同步爱用", {
+-        confirmButtonText: "确定",
+-        cancelButtonText: "取消",
+-      }).then(() => {
++      this.$confirm(
++        this.$t("product.common.confirm") +
++          this.$t("product.category.virtual.syncCategory") +
++          "?",
++        "虚拟类目一键同步爱用",
++        {
++          confirmButtonText: this.$t("product.common.confirm"),
++          cancelButtonText: this.$t("product.common.cancel"),
++        }
++      ).then(() => {
+         this.$api.syncGoodsType(
+           {
+             sourceChannel: 0,
+@@ -680,7 +739,8 @@ export default {
+           },
+           (res) => {
+             this.$message.success(
+-              "类目同步成功，请等待1~2分钟后刷新。切勿重复同步操作"
++              this.$t("product.category.virtual.syncSuccess") ||
++                "类目同步成功，请等待1~2分钟后刷新。切勿重复同步操作"
+             );
+             this.getType({
+               channel: this.appType,
+diff --git a/src/pages/product/insourcing/Companyinfo.vue b/src/pages/product/insourcing/Companyinfo.vue
+index 97590379..978c7951 100644
+--- a/src/pages/product/insourcing/Companyinfo.vue
++++ b/src/pages/product/insourcing/Companyinfo.vue
+@@ -8,10 +8,13 @@
+         :model="filterForm"
+         class="search-form"
+       >
+-        <el-form-item label="公司名称" prop="companyName">
++        <el-form-item
++          :label="$t('product.insourcing.company.companyName')"
++          prop="companyName"
++        >
+           <el-input
+             v-model="filterForm.companyName"
+-            placeholder="请输入公司名称"
++            :placeholder="$t('product.insourcing.company.inputCompanyName')"
+             clearable
+             @keyup.native="
+               filterForm.companyName = filterForm.companyName.replace(
+@@ -21,10 +24,13 @@
+             "
+           />
+         </el-form-item>
+-        <el-form-item label="公司编码" prop="companyCode">
++        <el-form-item
++          :label="$t('product.insourcing.company.companyCode')"
++          prop="companyCode"
++        >
+           <el-input
+             v-model="filterForm.companyCode"
+-            placeholder="请输入公司编码"
++            :placeholder="$t('product.insourcing.company.inputCompanyCode')"
+             clearable
+             @keyup.native="
+               filterForm.companyCode = filterForm.companyCode.replace(
+@@ -35,8 +41,12 @@
+           />
+         </el-form-item>
+         <el-form-item>
+-          <el-button type="primary" @click="search(1)">查 询</el-button>
+-          <el-button type="success" @click="addCompany()">新 增</el-button>
++          <el-button type="primary" @click="search(1)">{{
++            $t("product.insourcing.company.search")
++          }}</el-button>
++          <el-button type="success" @click="addCompany()">{{
++            $t("product.insourcing.company.add")
++          }}</el-button>
+         </el-form-item>
+       </el-form>
+     </el-card>
+@@ -60,48 +70,57 @@
+           sortable
+         />
+         <el-table-column
+-          label="公司名称"
++          :label="$t('product.insourcing.company.companyName')"
+           width="200"
+           prop="companyName"
+           align="center"
+         />
+         <el-table-column
+-          label="公司编码"
++          :label="$t('product.insourcing.company.companyCode')"
+           width="200"
+           prop="companyCode"
+           align="center"
+         />
+-        <el-table-column label="状态" width="200" prop="status" align="center">
++        <el-table-column
++          :label="$t('product.insourcing.company.status')"
++          width="200"
++          prop="status"
++          align="center"
++        >
+           <template slot-scope="scope">
+-            <el-tag v-if="scope.row.status === 1" type="success">已启用</el-tag>
+-            <el-tag v-else type="danger">已禁用</el-tag>
++            <el-tag v-if="scope.row.status === 1" type="success">{{
++              $t("product.insourcing.company.enabled")
++            }}</el-tag>
++            <el-tag v-else type="danger">{{
++              $t("product.insourcing.company.disabled")
++            }}</el-tag>
+           </template>
+         </el-table-column>
+         <el-table-column
+-          label="创建时间"
++          :label="$t('product.insourcing.company.createTime')"
+           width="200"
+           prop="createTime"
+           align="center"
+         />
+         <el-table-column
+-          label="修改时间"
++          :label="$t('product.insourcing.company.updateTime')"
+           width="200"
+           prop="updateTime"
+           align="center"
+         />
+-        <el-table-column label="操作" align="center" width="380">
++        <el-table-column :label="$t('product.common.operation')" align="center">
+           <template slot-scope="scope">
+             <el-button size="small" type="success" @click="edit(scope.row)">
+-              修 改
++              {{ $t("product.insourcing.company.edit") }}
+             </el-button>
+             <el-button size="small" type="danger" @click="delect(scope.row)">
+-              删 除
++              {{ $t("product.insourcing.company.delete") }}
+             </el-button>
+             <el-button size="small" type="primary" @click="phoneBtn(scope.row)">
+-              员工管理
++              {{ $t("product.insourcing.company.employeeManagement") }}
+             </el-button>
+             <el-button size="small" type="info" @click="SKUBtn(scope.row)">
+-              商品管理
++              {{ $t("product.insourcing.company.productManagement") }}
+             </el-button>
+           </template>
+         </el-table-column>
+@@ -231,11 +250,15 @@ export default {
+      * @param {Object} row - 行数据
+      */
+     delect(row) {
+-      this.$confirm("是否删除该公司管理?", "提示", {
+-        confirmButtonText: "确定",
+-        cancelButtonText: "取消",
+-        type: "warning",
+-      })
++      this.$confirm(
++        this.$t("product.insourcing.company.confirmDelete"),
++        this.$t("product.common.tip"),
++        {
++          confirmButtonText: this.$t("product.common.confirm"),
++          cancelButtonText: this.$t("product.common.cancel"),
++          type: "warning",
++        }
++      )
+         .then(() => {
+           this.$api.deleteCompany(
+             {
+@@ -251,9 +274,13 @@ export default {
+                   this.pageNum--;
+                 }
+                 this.getQueryCompany();
+-                this.$message.success("删除成功");
++                this.$message.success(
++                  this.$t("product.insourcing.company.deleteSuccess")
++                );
+               } else {
+-                this.$message.error(res.data.message || "删除失败");
++                this.$message.error(
++                  res.data.message || this.$t("product.common.failed")
++                );
+               }
+             }
+           );
+diff --git a/src/pages/product/insourcing/components/add.vue b/src/pages/product/insourcing/components/add.vue
+index 674316b3..1883b961 100644
+--- a/src/pages/product/insourcing/components/add.vue
++++ b/src/pages/product/insourcing/components/add.vue
+@@ -1,6 +1,10 @@
+ <template>
+   <el-dialog
+-    :title="mode === 'add' ? '新 增' : '修 改'"
++    :title="
++      mode === 'add'
++        ? $t('product.insourcing.company.add')
++        : $t('product.insourcing.company.edit')
++    "
+     :visible.sync="isShow"
+     width="600px"
+     @close="closeEvent"
+@@ -13,33 +17,49 @@
+       :rules="rules"
+       class="dialog-form"
+     >
+-      <el-form-item label="公司名称" prop="companyName">
++      <el-form-item
++        :label="$t('product.insourcing.company.companyName')"
++        prop="companyName"
++      >
+         <el-input
+           v-model="filterForm.companyName"
+-          placeholder="请输入公司名称"
++          :placeholder="$t('product.insourcing.company.inputCompanyName')"
+         />
+       </el-form-item>
+-      <el-form-item label="公司编码" prop="companyCode">
++      <el-form-item
++        :label="$t('product.insourcing.company.companyCode')"
++        prop="companyCode"
++      >
+         <el-input
+           v-model="filterForm.companyCode"
+-          placeholder="请输入公司编码"
++          :placeholder="$t('product.insourcing.company.inputCompanyCode')"
+         />
+       </el-form-item>
+-      <el-form-item label="状态" prop="status">
++      <el-form-item :label="$t('product.common.status')" prop="status">
+         <el-select
+           v-model="filterForm.status"
+-          placeholder="请选择"
++          :placeholder="$t('product.insourcing.company.selectStatus')"
+           style="width: 100%"
+         >
+-          <el-option :value="1" label="启用" />
+-          <el-option :value="2" label="禁用" />
++          <el-option
++            :value="1"
++            :label="$t('product.insourcing.company.enabled')"
++          />
++          <el-option
++            :value="2"
++            :label="$t('product.insourcing.company.disabled')"
++          />
+         </el-select>
+       </el-form-item>
+     </el-form>
+     <template #footer>
+       <div class="dialog-footer">
+-        <el-button type="primary" @click="submit">确定</el-button>
+-        <el-button @click="closeEvent">取消</el-button>
++        <el-button type="primary" @click="submit">{{
++          $t("product.common.confirm")
++        }}</el-button>
++        <el-button @click="closeEvent">{{
++          $t("product.common.cancel")
++        }}</el-button>
+       </div>
+     </template>
+   </el-dialog>
+@@ -56,16 +76,34 @@ export default {
+       },
+       isShow: false,
+       editId: 0,
+-      rules: {
++    };
++  },
++  computed: {
++    rules() {
++      return {
+         companyName: [
+-          { required: true, message: "请输入公司名称", trigger: "blur" },
++          {
++            required: true,
++            message: this.$t("product.insourcing.company.inputCompanyName"),
++            trigger: "blur",
++          },
+         ],
+         companyCode: [
+-          { required: true, message: "请输入公司编码", trigger: "blur" },
++          {
++            required: true,
++            message: this.$t("product.insourcing.company.inputCompanyCode"),
++            trigger: "blur",
++          },
+         ],
+-        status: [{ required: true, message: "请选择状态", trigger: "blur" }],
+-      },
+-    };
++        status: [
++          {
++            required: true,
++            message: this.$t("product.insourcing.company.selectStatus"),
++            trigger: "blur",
++          },
++        ],
++      };
++    },
+   },
+   props: {
+     id: Number,
+@@ -94,10 +132,14 @@ export default {
+                 if (res.data.result === "success") {
+                   this.$emit("search");
+                   this.$emit("getQueryCompany");
+-                  this.$message.success("新增成功");
++                  this.$message.success(
++                    this.$t("product.insourcing.company.addSuccess")
++                  );
+                   this.isShow = false;
+                 } else {
+-                  this.$message.error(res.data.message || "新增失败");
++                  this.$message.error(
++                    res.data.message || this.$t("product.common.failed")
++                  );
+                 }
+               }
+             );
+@@ -111,11 +153,15 @@ export default {
+               },
+               (res) => {
+                 if (res.data.result === "success") {
+-                  this.$message.success("修改成功");
++                  this.$message.success(
++                    this.$t("product.insourcing.company.modifySuccess")
++                  );
+                   this.$emit("getQueryCompany");
+                   this.isShow = false;
+                 } else {
+-                  this.$message.error(res.data.message || "修改失败");
++                  this.$message.error(
++                    res.data.message || this.$t("product.common.failed")
++                  );
+                 }
+               }
+             );
+diff --git a/src/pages/product/insourcing/components/addPhone.vue b/src/pages/product/insourcing/components/addPhone.vue
+index 8cca23f6..c79215b5 100644
+--- a/src/pages/product/insourcing/components/addPhone.vue
++++ b/src/pages/product/insourcing/components/addPhone.vue
+@@ -1,6 +1,10 @@
+ <template>
+   <el-dialog
+-    :title="mode === 'add' ? '新 增' : '修 改'"
++    :title="
++      mode === 'add'
++        ? $t('product.insourcing.phone.add')
++        : $t('product.insourcing.phone.edit')
++    "
+     :visible.sync="isShow"
+     width="600px"
+     @close="closeEvent"
+@@ -14,27 +18,43 @@
+       :rules="rules"
+       class="dialog-form"
+     >
+-      <el-form-item label="电话" prop="phone">
+-        <el-input v-model="filterForm.phone" placeholder="请输入电话" />
++      <el-form-item :label="$t('product.insourcing.phone.phone')" prop="phone">
++        <el-input
++          v-model="filterForm.phone"
++          :placeholder="$t('product.insourcing.phone.inputPhone')"
++        />
+       </el-form-item>
+-      <el-form-item label="姓名" prop="name">
+-        <el-input v-model="filterForm.name" placeholder="请输入姓名" />
++      <el-form-item :label="$t('product.insourcing.phone.name')" prop="name">
++        <el-input
++          v-model="filterForm.name"
++          :placeholder="$t('product.insourcing.phone.inputName')"
++        />
+       </el-form-item>
+-      <el-form-item label="状态" prop="status">
++      <el-form-item :label="$t('product.common.status')" prop="status">
+         <el-select
+           v-model="filterForm.status"
+-          placeholder="请选择"
++          :placeholder="$t('product.insourcing.phone.selectStatus')"
+           style="width: 100%"
+         >
+-          <el-option :value="1" label="启用" />
+-          <el-option :value="0" label="禁用" />
++          <el-option
++            :value="1"
++            :label="$t('product.insourcing.phone.enabled')"
++          />
++          <el-option
++            :value="0"
++            :label="$t('product.insourcing.phone.disabled')"
++          />
+         </el-select>
+       </el-form-item>
+     </el-form>
+     <template #footer>
+       <div class="dialog-footer">
+-        <el-button type="primary" @click="submit">确定</el-button>
+-        <el-button @click="closeEvent">取消</el-button>
++        <el-button type="primary" @click="submit">{{
++          $t("product.common.confirm")
++        }}</el-button>
++        <el-button @click="closeEvent">{{
++          $t("product.common.cancel")
++        }}</el-button>
+       </div>
+     </template>
+   </el-dialog>
+@@ -50,13 +70,35 @@ export default {
+         status: "", // 否 string 1(启用)0(禁用)
+       },
+       isShow: false,
+-      rules: {
+-        phone: [{ required: true, message: "请输入电话", trigger: "blur" }],
+-        name: [{ required: true, message: "请输入姓名", trigger: "blur" }],
+-        status: [{ required: true, message: "请选择状态", trigger: "blur" }],
+-      },
+     };
+   },
++  computed: {
++    rules() {
++      return {
++        phone: [
++          {
++            required: true,
++            message: this.$t("product.insourcing.phone.inputPhone"),
++            trigger: "blur",
++          },
++        ],
++        name: [
++          {
++            required: true,
++            message: this.$t("product.insourcing.phone.inputName"),
++            trigger: "blur",
++          },
++        ],
++        status: [
++          {
++            required: true,
++            message: this.$t("product.insourcing.phone.selectStatus"),
++            trigger: "blur",
++          },
++        ],
++      };
++    },
++  },
+   props: {
+     id: {
+       type: Number,
+@@ -88,7 +130,9 @@ export default {
+                   this.$message.error(res.data.data.message);
+                 } else {
+                   this.$emit("getQueryPurchasePhone", this.companyId);
+-                  this.$message.success("新增成功");
++                  this.$message.success(
++                    this.$t("product.insourcing.phone.addSuccess")
++                  );
+                   this.isShow = false;
+                 }
+               }
+@@ -107,7 +151,9 @@ export default {
+                   this.$message.error(res.data.data.message);
+                 } else {
+                   this.$emit("getQueryPurchasePhone", this.companyId);
+-                  this.$message.success("修改成功");
++                  this.$message.success(
++                    this.$t("product.insourcing.phone.modifySuccess")
++                  );
+                   this.isShow = false;
+                 }
+               }
+diff --git a/src/pages/product/insourcing/components/addSku.vue b/src/pages/product/insourcing/components/addSku.vue
+index 49f3e6ff..7dd7c019 100644
+--- a/src/pages/product/insourcing/components/addSku.vue
++++ b/src/pages/product/insourcing/components/addSku.vue
+@@ -1,6 +1,10 @@
+ <template>
+   <el-dialog
+-    :title="mode === 'add' ? '新 增' : '修 改'"
++    :title="
++      mode === 'add'
++        ? $t('product.insourcing.sku.add')
++        : $t('product.insourcing.sku.edit')
++    "
+     :visible.sync="isShow"
+     width="600px"
+     @close="closeEvent"
+@@ -14,31 +18,47 @@
+       :rules="rules"
+       class="dialog-form"
+     >
+-      <el-form-item label="SKU编码" prop="skuCode">
+-        <el-input v-model="filterForm.skuCode" placeholder="请输入SKU编码" />
++      <el-form-item
++        :label="$t('product.insourcing.sku.skuCode')"
++        prop="skuCode"
++      >
++        <el-input
++          v-model="filterForm.skuCode"
++          :placeholder="$t('product.insourcing.sku.inputSkuCode')"
++        />
+       </el-form-item>
+-      <el-form-item label="内部价" prop="internalPrice">
++      <el-form-item
++        :label="$t('product.insourcing.sku.internalPrice')"
++        prop="internalPrice"
++      >
+         <el-input
+           v-model="filterForm.internalPrice"
+-          placeholder="请输入内部价"
++          :placeholder="$t('product.insourcing.sku.inputInternalPrice')"
+           type="number"
+         />
+       </el-form-item>
+-      <el-form-item label="状态" prop="status">
++      <el-form-item :label="$t('product.common.status')" prop="status">
+         <el-select
+           v-model="filterForm.status"
+-          placeholder="请选择"
++          :placeholder="$t('product.insourcing.sku.selectStatus')"
+           style="width: 100%"
+         >
+-          <el-option :value="1" label="启用" />
+-          <el-option :value="0" label="禁用" />
++          <el-option :value="1" :label="$t('product.insourcing.sku.enabled')" />
++          <el-option
++            :value="0"
++            :label="$t('product.insourcing.sku.disabled')"
++          />
+         </el-select>
+       </el-form-item>
+     </el-form>
+     <template #footer>
+       <div class="dialog-footer">
+-        <el-button type="primary" @click="submit">确定</el-button>
+-        <el-button @click="closeEvent">取消</el-button>
++        <el-button type="primary" @click="submit">{{
++          $t("product.common.confirm")
++        }}</el-button>
++        <el-button @click="closeEvent">{{
++          $t("product.common.cancel")
++        }}</el-button>
+       </div>
+     </template>
+   </el-dialog>
+@@ -54,22 +74,40 @@ export default {
+         status: "", // 否 string 1(启用)0(禁用)
+       },
+       isShow: false,
+-      rules: {
++    };
++  },
++  computed: {
++    rules() {
++      return {
+         skuCode: [
+-          { required: true, message: "请输入SKU编码", trigger: "blur" },
++          {
++            required: true,
++            message: this.$t("product.insourcing.sku.inputSkuCode"),
++            trigger: "blur",
++          },
+         ],
+         internalPrice: [
+-          { required: true, message: "请输入内部价", trigger: "blur" },
++          {
++            required: true,
++            message: this.$t("product.insourcing.sku.inputInternalPrice"),
++            trigger: "blur",
++          },
+           {
+             pattern:
+               /^(?!0$)(?:[1-9]\d*(?:\.\d{1,2})?|0\.(?:[1-9]\d?|\d[1-9]))$/,
+-            message: "请输入正确数字（只能保留两位小数）",
++            message: this.$t("product.insourcing.sku.priceFormatError"),
+             trigger: "blur",
+           },
+         ],
+-        status: [{ required: true, message: "请选择状态", trigger: "blur" }],
+-      },
+-    };
++        status: [
++          {
++            required: true,
++            message: this.$t("product.insourcing.sku.selectStatus"),
++            trigger: "blur",
++          },
++        ],
++      };
++    },
+   },
+   props: {
+     id: {
+@@ -102,7 +140,9 @@ export default {
+                   this.$message.error(res.data.data.message);
+                 } else {
+                   this.$emit("getQueryCompanySku", this.companyId);
+-                  this.$message.success("新增成功");
++                  this.$message.success(
++                    this.$t("product.insourcing.sku.addSuccess")
++                  );
+                   this.isShow = false;
+                 }
+               }
+@@ -121,7 +161,9 @@ export default {
+                   this.$message.error(res.data.data.message);
+                 } else {
+                   this.$emit("getQueryCompanySku", this.companyId);
+-                  this.$message.success("修改成功");
++                  this.$message.success(
++                    this.$t("product.insourcing.sku.modifySuccess")
++                  );
+                   this.isShow = false;
+                 }
+               }
+diff --git a/src/pages/product/insourcing/phone.vue b/src/pages/product/insourcing/phone.vue
+index 1c0a59f8..880285fc 100644
+--- a/src/pages/product/insourcing/phone.vue
++++ b/src/pages/product/insourcing/phone.vue
+@@ -1,6 +1,6 @@
+ <template>
+   <el-dialog
+-    title="员工管理"
++    :title="$t('product.insourcing.phone.title')"
+     :visible.sync="isShow"
+     width="1200px"
+     @close="closeEvent"
+@@ -15,17 +15,24 @@
+           :model="filterForm"
+           class="search-form"
+         >
+-          <el-form-item label="姓名" prop="name">
++          <el-form-item
++            :label="$t('product.insourcing.phone.name')"
++            prop="name"
++          >
+             <el-input
+               v-model="filterForm.name"
+-              placeholder="请输入姓名"
++              :placeholder="$t('product.insourcing.phone.inputName')"
+               clearable
+             />
+           </el-form-item>
+           <el-form-item>
+             <div class="operator-block">
+-              <el-button type="primary" @click="search(1)">查 询</el-button>
+-              <el-button type="success" @click="addPurchase()">新 增</el-button>
++              <el-button type="primary" @click="search(1)">{{
++                $t("product.insourcing.phone.search")
++              }}</el-button>
++              <el-button type="success" @click="addPurchase()">{{
++                $t("product.insourcing.phone.add")
++              }}</el-button>
+               <div class="import-excel">
+                 <input
+                   type="file"
+@@ -34,11 +41,13 @@
+                   ref="file"
+                   accept=".xlsx,.xls"
+                 />
+-                <el-button type="success">导入Excel</el-button>
++                <el-button type="success">{{
++                  $t("product.insourcing.phone.importExcel")
++                }}</el-button>
+               </div>
+-              <el-button type="primary" @click="exportExc()"
+-                >导出Excel</el-button
+-              >
++              <el-button type="primary" @click="exportExc()">
++                {{ $t("product.insourcing.phone.exportExcel") }}
++              </el-button>
+               <el-button
+                 type="info"
+                 :underline="false"
+@@ -46,7 +55,7 @@
+                 download="内购商品_员工管理模板.xlsx"
+                 class="download-link"
+               >
+-                下载订单模板
++                {{ $t("product.insourcing.phone.downloadTemplate") }}
+               </el-button>
+             </div>
+           </el-form-item>
+@@ -67,55 +76,61 @@
+         >
+           <el-table-column
+             type="index"
+-            label="序号"
++            :label="$t('product.common.serialNumber')"
+             width="100"
+             align="center"
+             sortable
+           />
+           <el-table-column
+-            label="电话"
++            :label="$t('product.insourcing.phone.phone')"
+             min-width="150"
+             prop="phone"
+             align="center"
+           />
+           <el-table-column
+-            label="姓名"
++            :label="$t('product.insourcing.phone.name')"
+             min-width="150"
+             prop="name"
+             align="center"
+           />
+           <el-table-column
+-            label="状态"
++            :label="$t('product.common.status')"
+             min-width="150"
+             prop="status"
+             align="center"
+           >
+             <template slot-scope="scope">
+-              <el-tag v-if="scope.row.status === 1" type="success"
+-                >已启用</el-tag
+-              >
+-              <el-tag v-else type="danger">已禁用</el-tag>
++              <el-tag v-if="scope.row.status === 1" type="success">
++                {{ $t("product.insourcing.phone.enabled") }}
++              </el-tag>
++              <el-tag v-else type="danger">{{
++                $t("product.insourcing.phone.disabled")
++              }}</el-tag>
+             </template>
+           </el-table-column>
+           <el-table-column
+-            label="创建时间"
++            :label="$t('product.insourcing.phone.createTime')"
+             min-width="180"
+             prop="createTime"
+             align="center"
+           />
+           <el-table-column
+-            label="修改时间"
++            :label="$t('product.insourcing.phone.updateTime')"
+             min-width="180"
+             prop="updateTime"
+             align="center"
+           />
+-          <el-table-column label="操作" align="center" width="180">
++          <el-table-column
++            :label="$t('product.common.operation')"
++            align="center"
++            width="180"
++          >
+             <template slot-scope="scope">
+               <el-button size="small" type="success" @click="edit(scope.row)">
+-                修 改
++                {{ $t("product.insourcing.phone.edit") }}
+               </el-button>
+               <el-button size="small" type="danger" @click="delect(scope.row)">
+-                删 除
++                {{ $t("product.insourcing.phone.delete") }}
+               </el-button>
+             </template>
+           </el-table-column>
+@@ -240,11 +255,15 @@ export default {
+      * @param {Object} row - 行数据
+      */
+     delect(row) {
+-      this.$confirm("是否删除该员工管理?", "提示", {
+-        confirmButtonText: "确定",
+-        cancelButtonText: "取消",
+-        type: "warning",
+-      })
++      this.$confirm(
++        this.$t("product.insourcing.phone.confirmDelete"),
++        this.$t("product.common.tip"),
++        {
++          confirmButtonText: this.$t("product.common.confirm"),
++          cancelButtonText: this.$t("product.common.cancel"),
++          type: "warning",
++        }
++      )
+         .then(() => {
+           this.$api.deletePurchasePhone(
+             {
+@@ -259,10 +278,14 @@ export default {
+                 ) {
+                   this.pageNum--;
+                 }
+-                this.$message.success("删除成功");
++                this.$message.success(
++                  this.$t("product.insourcing.phone.deleteSuccess")
++                );
+                 this.getQueryPurchasePhone(row.companyId || this.companyId);
+               } else {
+-                this.$message.error(res.data.message || "删除失败");
++                this.$message.error(
++                  res.data.message || this.$t("product.common.failed")
++                );
+               }
+             }
+           );
+@@ -296,12 +319,12 @@ export default {
+      */
+     importExc() {
+       if (!this.$refs.file || !this.$refs.file.files[0]) {
+-        this.$message.warning("请选择要导入的文件");
++        this.$message.warning(this.$t("product.insourcing.phone.selectFile"));
+         return;
+       }
+       this.fileList = this.$refs.file.files[0];
+       if (!this.fileList) {
+-        this.$message.error("请先导入文件再继续");
++        this.$message.error(this.$t("product.insourcing.phone.selectFile"));
+         return;
+       }
+       const form_data = new FormData();
+@@ -311,10 +334,15 @@ export default {
+         form_data,
+         (res) => {
+           if (res.data.code === "0") {
+-            this.$message.success("导入成功");
++            this.$message.success(
++              this.$t("product.insourcing.phone.importSuccess")
++            );
+             this.getQueryPurchasePhone(this.companyId);
+           } else {
+-            this.$message.error(res.data.message || "导入失败");
++            this.$message.error(
++              res.data.message ||
++                this.$t("product.insourcing.phone.importFailed")
++            );
+           }
+           if (this.$refs.file) {
+             this.$refs.file.value = null;
+@@ -359,9 +387,13 @@ export default {
+               link.click();
+               window.URL.revokeObjectURL(link.href);
+             }
+-            this.$message.success("导出成功");
++            this.$message.success(
++              this.$t("product.insourcing.phone.exportSuccess")
++            );
+           } else {
+-            this.$message.error("导出文件出错");
++            this.$message.error(
++              this.$t("product.insourcing.phone.exportFailed")
++            );
+           }
+         }
+       );
+diff --git a/src/pages/product/insourcing/skuInfo.vue b/src/pages/product/insourcing/skuInfo.vue
+index c9884cb7..d9ee8e5e 100644
+--- a/src/pages/product/insourcing/skuInfo.vue
++++ b/src/pages/product/insourcing/skuInfo.vue
+@@ -1,6 +1,6 @@
+ <template>
+   <el-dialog
+-    title="商品管理"
++    :title="$t('product.insourcing.sku.title')"
+     :visible.sync="isShow"
+     width="1200px"
+     @close="closeEvent"
+@@ -16,17 +16,24 @@
+           :model="filterForm"
+           class="search-form"
+         >
+-          <el-form-item label="SKU编码" prop="skuCode">
++          <el-form-item
++            :label="$t('product.insourcing.sku.skuCode')"
++            prop="skuCode"
++          >
+             <el-input
+               v-model="filterForm.skuCode"
+-              placeholder="请输入SKU编码"
++              :placeholder="$t('product.insourcing.sku.inputSkuCode')"
+               clearable
+             />
+           </el-form-item>
+           <el-form-item>
+             <div class="operator-block">
+-              <el-button type="primary" @click="search(1)">查 询</el-button>
+-              <el-button type="success" @click="addSku()">新 增</el-button>
++              <el-button type="primary" @click="search(1)">{{
++                $t("product.insourcing.sku.search")
++              }}</el-button>
++              <el-button type="success" @click="addSku()">{{
++                $t("product.insourcing.sku.add")
++              }}</el-button>
+               <div class="import-excel">
+                 <input
+                   type="file"
+@@ -35,11 +42,13 @@
+                   ref="file"
+                   accept=".xlsx,.xls"
+                 />
+-                <el-button type="success">导入Excel</el-button>
++                <el-button type="success">{{
++                  $t("product.insourcing.sku.importExcel")
++                }}</el-button>
+               </div>
+-              <el-button type="primary" @click="exportExc()"
+-                >导出Excel</el-button
+-              >
++              <el-button type="primary" @click="exportExc()">
++                {{ $t("product.insourcing.sku.exportExcel") }}
++              </el-button>
+               <el-button
+                 type="info"
+                 :underline="false"
+@@ -47,7 +56,7 @@
+                 download="内购商品_商品管理模板.xlsx"
+                 class="download-link"
+               >
+-                下载订单模板
++                {{ $t("product.insourcing.sku.downloadTemplate") }}
+               </el-button>
+             </div>
+           </el-form-item>
+@@ -68,70 +77,75 @@
+         >
+           <el-table-column
+             type="index"
+-            label="序号"
++            :label="$t('product.common.serialNumber')"
+             width="100"
+             align="center"
+             sortable
+           />
+           <el-table-column
+-            label="SKU编码"
++            :label="$t('product.insourcing.sku.skuCode')"
+             min-width="150"
+             prop="skuCode"
+             align="center"
+           />
+           <el-table-column
+-            label="SKU名称"
++            :label="$t('product.insourcing.sku.skuName')"
+             min-width="150"
+             prop="skuName"
+             align="center"
+           />
+           <el-table-column
+-            label="内部价"
++            :label="$t('product.insourcing.sku.internalPrice')"
+             min-width="150"
+             prop="internalPrice"
+             align="center"
+           >
+             <template slot-scope="scope">
+-              <span>{{ scope.row.internalPrice || 0 }}元</span>
++              <span
++                >{{ scope.row.internalPrice || 0
++                }}{{ $t("product.common.yuan") || "元" }}</span
++              >
+             </template>
+           </el-table-column>
+           <el-table-column
+-            label="状态"
++            :label="$t('product.common.status')"
+             min-width="150"
+             prop="status"
+             align="center"
+           >
+             <template slot-scope="scope">
+-              <el-tag v-if="scope.row.status === 1" type="success"
+-                >已启用</el-tag
+-              >
+-              <el-tag v-else type="danger">已禁用</el-tag>
++              <el-tag v-if="scope.row.status === 1" type="success">
++                {{ $t("product.insourcing.sku.enabled") }}
++              </el-tag>
++              <el-tag v-else type="danger">{{
++                $t("product.insourcing.sku.disabled")
++              }}</el-tag>
+             </template>
+           </el-table-column>
+           <el-table-column
+-            label="创建时间"
++            :label="$t('product.insourcing.sku.createTime')"
+             min-width="180"
+             prop="createTime"
+             align="center"
+           />
+           <el-table-column
+-            label="修改时间"
++            :label="$t('product.insourcing.sku.updateTime')"
+             min-width="180"
+             prop="updateTime"
+             align="center"
+           />
+           <el-table-column
+-            label="操作"
++            :label="$t('product.common.operation')"
+             width="180"
+             align="center"
+             fixed="right"
+           >
+             <template slot-scope="scope">
+               <el-button size="small" type="success" @click="edit(scope.row)">
+-                修 改
++                {{ $t("product.insourcing.sku.edit") }}
+               </el-button>
+               <el-button size="small" type="danger" @click="delect(scope.row)">
+-                删 除
++                {{ $t("product.insourcing.sku.delete") }}
+               </el-button>
+             </template>
+           </el-table-column>
+@@ -241,12 +255,12 @@ export default {
+      */
+     importExc() {
+       if (!this.$refs.file || !this.$refs.file.files[0]) {
+-        this.$message.warning("请选择要导入的文件");
++        this.$message.warning(this.$t("product.insourcing.sku.selectFile"));
+         return;
+       }
+       this.fileList = this.$refs.file.files[0];
+       if (!this.fileList) {
+-        this.$message.error("请先导入文件再继续");
++        this.$message.error(this.$t("product.insourcing.sku.selectFile"));
+         return;
+       }
+       const form_data = new FormData();
+@@ -256,10 +270,14 @@ export default {
+         form_data,
+         (res) => {
+           if (res.data.code === "0") {
+-            this.$message.success("导入成功");
++            this.$message.success(
++              this.$t("product.insourcing.sku.importSuccess")
++            );
+             this.getQueryCompanySku(this.companyId);
+           } else {
+-            this.$message.error(res.data.message || "导入失败");
++            this.$message.error(
++              res.data.message || this.$t("product.insourcing.sku.importFailed")
++            );
+           }
+           if (this.$refs.file) {
+             this.$refs.file.value = null;
+@@ -304,9 +322,11 @@ export default {
+               link.click();
+               window.URL.revokeObjectURL(link.href);
+             }
+-            this.$message.success("导出成功");
++            this.$message.success(
++              this.$t("product.insourcing.sku.exportSuccess")
++            );
+           } else {
+-            this.$message.error("导出文件出错");
++            this.$message.error(this.$t("product.insourcing.sku.exportFailed"));
+           }
+         }
+       );
+@@ -335,11 +355,15 @@ export default {
+      * @param {Object} row - 行数据
+      */
+     delect(row) {
+-      this.$confirm("是否删除该商品管理?", "提示", {
+-        confirmButtonText: "确定",
+-        cancelButtonText: "取消",
+-        type: "warning",
+-      })
++      this.$confirm(
++        this.$t("product.insourcing.sku.confirmDelete"),
++        this.$t("product.common.tip"),
++        {
++          confirmButtonText: this.$t("product.common.confirm"),
++          cancelButtonText: this.$t("product.common.cancel"),
++          type: "warning",
++        }
++      )
+         .then(() => {
+           this.$api.deleteCompanySku(
+             {
+@@ -355,9 +379,13 @@ export default {
+                   this.pageNum--;
+                 }
+                 this.getQueryCompanySku(row.companyId || this.companyId);
+-                this.$message.success("删除成功");
++                this.$message.success(
++                  this.$t("product.insourcing.sku.deleteSuccess")
++                );
+               } else {
+-                this.$message.error(res.data.message || "删除失败");
++                this.$message.error(
++                  res.data.message || this.$t("product.common.failed")
++                );
+               }
+             }
+           );
+diff --git a/src/pages/product/supplier/SupplierGoodsAdd/supplier-goods-add.vue b/src/pages/product/supplier/SupplierGoodsAdd/supplier-goods-add.vue
+index e5b398fc..c72ad7e8 100644
+--- a/src/pages/product/supplier/SupplierGoodsAdd/supplier-goods-add.vue
++++ b/src/pages/product/supplier/SupplierGoodsAdd/supplier-goods-add.vue
+@@ -2,11 +2,17 @@
+   <div class="page-layout">
+     <el-card class="form-card">
+       <div class="cell">
+-        <div class="left"><span class="required">*</span>发货仓</div>
++        <div class="left">
++          <span class="required">*</span
++          >{{ $t("product.supplier.goods.add.supplier") }}
++        </div>
+         <div class="right">{{ goodsData.supplier || "-" }}</div>
+       </div>
+       <div class="cell">
+-        <div class="left"><span class="required">*</span>发货仓SKU</div>
++        <div class="left">
++          <span class="required">*</span
++          >{{ $t("product.supplier.goods.add.skuCode") }}
++        </div>
+         <div class="right">{{ goodsData.supplierSkuCode || "-" }}</div>
+       </div>
+       <div class="cell">
+@@ -16,17 +22,20 @@
+             v-model="goodsData.purchasePrice"
+             :class="{ empty: !goodsData.purchasePrice }"
+             type="text"
+-            placeholder="请输入采购价"
++            :placeholder="$t('product.supplier.goods.add.inputInternalPrice')"
+           />
+         </div>
+       </div>
+       <div class="cell">
+-        <div class="left"><span class="required">*</span>商品名称</div>
++        <div class="left">
++          <span class="required">*</span
++          >{{ $t("product.supplier.goods.add.skuName") }}
++        </div>
+         <div class="right">
+           <el-input
+             v-model="goodsData.skuName"
+             :class="{ empty: !goodsData.skuName }"
+-            placeholder="请输入商品名称"
++            :placeholder="$t('product.supplier.goods.add.inputSkuName')"
+           />
+         </div>
+       </div>
+@@ -37,7 +46,10 @@
+         </div>
+       </div>
+       <div class="cell">
+-        <div class="left"><span class="required">*</span>商品主图</div>
++        <div class="left">
++          <span class="required">*</span
++          >{{ $t("product.supplier.goods.add.skuImage") }}
++        </div>
+         <div class="right">
+           <div class="image-container">
+             <div
+@@ -47,16 +59,22 @@
+             >
+               <img :src="v.src" :onerror="defaultImg" @click="showImg(v.src)" />
+               <span class="img-overlay">
+-                <i class="iconfont" @click="changeImg(i, i - 1)" title="上移"
++                <i
++                  class="iconfont"
++                  @click="changeImg(i, i - 1)"
++                  :title="$t('product.common.up') || '上移'"
+                   >&#xf0343;</i
+                 >
+-                <i class="iconfont" @click="changeImg(i, i + 1)" title="下移"
++                <i
++                  class="iconfont"
++                  @click="changeImg(i, i + 1)"
++                  :title="$t('product.common.down') || '下移'"
+                   >&#xf0344;</i
+                 >
+                 <i
+                   class="iconfont delete-icon"
+                   @click="deleteImg(v, i)"
+-                  title="删除"
++                  :title="$t('product.common.delete')"
+                   >&#xe7ed;</i
+                 >
+               </span>
+@@ -80,13 +98,20 @@
+       </div>
+       <div class="cell">
+         <div class="left">
+-          <h3 class="section-title">关键属性设置</h3>
++          <h3 class="section-title">
++            {{ $t("product.supplier.goods.add.attributes") }}
++          </h3>
+         </div>
+       </div>
+       <div class="cell">
+-        <div class="left"><span class="required">*</span>品牌</div>
++        <div class="left">
++          <span class="required">*</span>{{ $t("product.common.brand") }}
++        </div>
+         <div class="right">
+-          <el-input v-model="goodsData.brandName" placeholder="请输入品牌" />
++          <el-input
++            v-model="goodsData.brandName"
++            :placeholder="$t('product.common.brand')"
++          />
+         </div>
+       </div>
+       <div class="cell">
+@@ -103,19 +128,27 @@
+         <div class="left"><span class="required">*</span>是否二手</div>
+         <div v-if="goodsData" class="right">
+           <el-radio-group v-model="goodsData.isSecondhand">
+-            <el-radio :label="1">是</el-radio>
+-            <el-radio :label="0">否</el-radio>
++            <el-radio :label="1">{{ $t("product.common.yes") }}</el-radio>
++            <el-radio :label="0">{{ $t("product.common.no") }}</el-radio>
+           </el-radio-group>
+         </div>
+       </div>
+       <div class="cell">
+-        <div class="left"><span class="required">*</span>规格参数配置</div>
++        <div class="left">
++          <span class="required">*</span
++          >{{ $t("product.supplier.goods.add.specifications") }}
++        </div>
+         <div class="right">
+           <el-button
+             type="primary"
+             @click="testInput() ? (editing = !editing) : (editing = true)"
+           >
+-            {{ editing ? "编辑完成" : "编辑属性" }}
++            {{
++              editing
++                ? $t("product.common.finish") || "编辑完成"
++                : $t("product.common.edit") +
++                  $t("product.supplier.goods.add.attributes")
++            }}
+           </el-button>
+           <table
+             v-if="goodsData.supplierGoodsSpecificationValues"
+@@ -123,9 +156,16 @@
+           >
+             <thead>
+               <tr>
+-                <th>属性名称</th>
+-                <th>属性值</th>
+-                <th v-if="editing">操作</th>
++                <th>
++                  {{
++                    $t("product.supplier.goods.add.attributes") +
++                    $t("product.common.name")
++                  }}
++                </th>
++                <th>
++                  {{ $t("product.supplier.goods.add.attributes") + "值" }}
++                </th>
++                <th v-if="editing">{{ $t("product.common.operation") }}</th>
+               </tr>
+             </thead>
+             <tbody>
+@@ -139,7 +179,10 @@
+                     v-show="editing"
+                     v-model="v.specAlias"
+                     :class="{ empty: !v.specAlias }"
+-                    placeholder="请输入属性名称"
++                    :placeholder="
++                      $t('product.supplier.goods.add.attributes') +
++                      $t('product.common.name')
++                    "
+                   />
+                 </td>
+                 <td>
+@@ -148,7 +191,9 @@
+                     v-show="editing"
+                     v-model="v.specValue"
+                     :class="{ empty: !v.specValue }"
+-                    placeholder="请输入属性值"
++                    :placeholder="
++                      $t('product.supplier.goods.add.attributes') + '值'
++                    "
+                   />
+                 </td>
+                 <td v-if="editing">
+@@ -158,13 +203,17 @@
+                     icon="el-icon-delete"
+                     @click="deleteAttr(i)"
+                   >
+-                    删除
++                    {{ $t("product.common.delete") }}
+                   </el-button>
+                 </td>
+               </tr>
+               <tr v-if="editing">
+                 <td colspan="3" class="add-attr-cell" @click="addAttr">
+-                  <i class="el-icon-plus" /> 添加属性
++                  <i class="el-icon-plus" />
++                  {{
++                    $t("product.common.add") +
++                    $t("product.supplier.goods.add.attributes")
++                  }}
+                 </td>
+               </tr>
+             </tbody>
+@@ -172,19 +221,25 @@
+         </div>
+       </div>
+       <div class="cell">
+-        <div class="left">商品详情介绍</div>
++        <div class="left">
++          {{ $t("product.supplier.goods.add.productIntroduction") }}
++        </div>
+         <div class="right">
+           <div id="intruction" class="editor-container" />
+         </div>
+       </div>
+       <div class="cell">
+-        <div class="left">商品参数</div>
++        <div class="left">
++          {{ $t("product.supplier.goods.add.productDetails") }}
++        </div>
+         <div class="right">
+           <div id="param" class="editor-container" />
+         </div>
+       </div>
+       <div class="bottom">
+-        <el-button type="primary" @click="submit">提交</el-button>
++        <el-button type="primary" @click="submit">{{
++          $t("product.common.submit")
++        }}</el-button>
+       </div>
+     </el-card>
+   </div>
+@@ -368,9 +423,13 @@ export default {
+             imgArr.push({ src: v });
+           });
+           this.goodsData.supplierGoodsSkuImgs = imgArr;
+-          this.$message.success("图片上传成功");
++          this.$message.success(
++            this.$t("product.supplier.goods.add.uploadSuccess")
++          );
+         } else {
+-          this.$message.error("图片上传失败");
++          this.$message.error(
++            this.$t("product.supplier.goods.add.uploadFailed")
++          );
+         }
+       });
+     },
+@@ -384,7 +443,11 @@ export default {
+         }
+         this.goodsData.supplierGoodsSpecificationValues.push({});
+       } else {
+-        this.$message.error("所有的输入框不为空，才可以添加新条目");
++        this.$message.error(
++          this.$t("product.common.pleaseInput") +
++            this.$t("product.supplier.goods.add.attributes") +
++            "值"
++        );
+       }
+     },
+     /**
+@@ -427,23 +490,29 @@ export default {
+      */
+     submit() {
+       if (!this.goodsData.skuName) {
+-        this.$message.error("商品名称不能为空");
++        this.$message.error(this.$t("product.supplier.goods.add.inputSkuName"));
+         window.scrollTo(0, 0);
+         return;
+       }
+       if (!this.goodsData.purchasePrice) {
+-        this.$message.error("采购价不能为空");
++        this.$message.error(
++          this.$t("product.supplier.goods.add.inputInternalPrice")
++        );
+         return;
+       }
+       if (!this.goodsData.brandName) {
+-        this.$message.error("品牌不能为空");
++        this.$message.error(
++          this.$t("product.common.brand") + this.$t("product.common.notSet")
++        );
+         return;
+       }
+       if (
+         this.goodsData.isSecondhand !== 0 &&
+         this.goodsData.isSecondhand !== 1
+       ) {
+-        this.$message.error("请选择是否二手");
++        this.$message.error(
++          this.$t("product.common.pleaseSelect") + "是否二手"
++        );
+         return;
+       }
+ 
+@@ -465,13 +534,17 @@ export default {
+       }
+       this.$api.saveGoodsSupplierSkuToEditById(this.goodsData, (res) => {
+         if (res.data.result === "success") {
+-          this.$message.success("修改成功");
++          this.$message.success(
++            this.$t("product.supplier.goods.add.saveSuccess")
++          );
+           this.$router.push({
+             path: "/supplier-goods-list",
+             query: { pageNum: this.pageNum },
+           });
+         } else {
+-          this.$message.error(res.data.message || "保存失败");
++          this.$message.error(
++            res.data.message || this.$t("product.supplier.goods.add.saveFailed")
++          );
+         }
+       });
+     },
+diff --git a/src/pages/product/supplier/SupplierGoodsList/supplier-goods-list.vue b/src/pages/product/supplier/SupplierGoodsList/supplier-goods-list.vue
+index d32bcba1..3b9c9442 100644
+--- a/src/pages/product/supplier/SupplierGoodsList/supplier-goods-list.vue
++++ b/src/pages/product/supplier/SupplierGoodsList/supplier-goods-list.vue
+@@ -8,41 +8,45 @@
+         :model="filterForm"
+         class="search-form"
+       >
+-        <el-form-item prop="name">
++        <el-form-item :label="$t('product.supplier.goods.list.skuName')">
+           <el-input
+             v-model="filterForm.name"
+-            placeholder="请输入商品名称"
++            :placeholder="$t('product.supplier.goods.list.skuName')"
+             clearable
+           />
+         </el-form-item>
+-        <el-form-item prop="supplier">
++        <el-form-item :label="$t('product.supplier.goods.list.supplier')">
+           <el-select
+             v-model="filterForm.supplier"
+-            placeholder="请选择发货仓"
++            :placeholder="$t('product.supplier.goods.list.selectSupplier')"
+             clearable
+           >
+             <el-option
+               v-for="(option, index) in supplierOption"
+-              :key="index"
++              :key="`supplier_${index}_${option.value || option.id}`"
+               :label="option.name"
+               :value="option.value"
+             />
+           </el-select>
+         </el-form-item>
+-        <el-form-item prop="supplierSkuCode">
++        <el-form-item :label="$t('product.supplier.goods.list.skuCode')">
+           <el-input
+             v-model="filterForm.supplierSkuCode"
+-            placeholder="请输入发货仓SKU"
++            :placeholder="$t('product.supplier.goods.list.skuCode')"
+             clearable
+           />
+         </el-form-item>
+         <el-form-item>
+-          <el-button type="primary" @click="search(1)">查 询</el-button>
+-          <el-button type="info" @click="resetForm('filterForm')"
+-            >重 置</el-button
+-          >
++          <el-button type="primary" @click="search(1)">{{
++            $t("product.supplier.goods.list.search")
++          }}</el-button>
++          <el-button type="info" @click="resetForm('filterForm')">
++            {{ $t("product.common.reset") }}
++          </el-button>
+           <el-button type="info" class="download-link" @click="download">
+-            <i class="el-icon-document" />下载
++            <i class="el-icon-document" />{{
++              $t("product.supplier.goods.list.exportExcel")
++            }}
+           </el-button>
+           <div class="upload-wrapper">
+             <el-upload
+@@ -55,8 +59,12 @@
+               :data="supplierObj"
+               :auto-upload="false"
+             >
+-              <el-button slot="trigger" type="primary">选取文件</el-button>
+-              <el-button type="success" @click="submitUpload">上传</el-button>
++              <el-button slot="trigger" type="primary">{{
++                $t("product.supplier.goods.list.selectFile")
++              }}</el-button>
++              <el-button type="success" @click="submitUpload">{{
++                $t("product.supplier.goods.list.importExcel")
++              }}</el-button>
+             </el-upload>
+           </div>
+         </el-form-item>
+@@ -65,8 +73,12 @@
+ 
+     <!-- 操作按钮区域 -->
+     <div class="operator-block">
+-      <el-button type="warning" @click="mutilateDelete">批量删除</el-button>
+-      <el-button type="success" @click="join">加入</el-button>
++      <el-button type="warning" @click="mutilateDelete">{{
++        $t("product.supplier.goods.list.batchDelete")
++      }}</el-button>
++      <el-button type="success" @click="join">{{
++        $t("product.supplier.goods.list.join")
++      }}</el-button>
+     </div>
+ 
+     <!-- 数据表格 -->
+@@ -82,20 +94,20 @@
+         <el-table-column type="selection" width="55" align="center" />
+         <el-table-column
+           prop="supplier"
+-          label="发货仓"
++          :label="$t('product.supplier.goods.list.supplier')"
+           width="120"
+           align="center"
+         />
+         <el-table-column
+           prop="supplierSkuCode"
+-          label="发货仓SKU"
++          :label="$t('product.supplier.goods.list.skuCode')"
+           min-width="150"
+           align="center"
+           show-overflow-tooltip
+         />
+         <el-table-column
+           prop="name"
+-          label="商品名称"
++          :label="$t('product.supplier.goods.list.skuName')"
+           min-width="250"
+           align="center"
+           show-overflow-tooltip
+@@ -107,7 +119,11 @@
+           align="center"
+           show-overflow-tooltip
+         />
+-        <el-table-column label="商品状态" width="120" align="center">
++        <el-table-column
++          :label="$t('product.common.status')"
++          width="120"
++          align="center"
++        >
+           <template slot-scope="scope">
+             <el-tag v-if="scope.row.isJoin === 0" type="info">未加入</el-tag>
+             <el-tag v-else-if="scope.row.isJoin === 1" type="success"
+@@ -116,17 +132,22 @@
+             <span v-else>-</span>
+           </template>
+         </el-table-column>
+-        <el-table-column label="操作" width="180" align="center">
++        <el-table-column
++          :label="$t('product.common.operation')"
++          width="180"
++          align="center"
++        >
+           <template slot-scope="scope">
+-            <el-button size="small" type="success" @click="editPage(scope.row)"
+-              >编辑</el-button
+-            >
++            <el-button size="small" type="success" @click="editPage(scope.row)">
++              {{ $t("product.supplier.goods.list.edit") }}
++            </el-button>
+             <el-button
+               size="small"
+               type="danger"
+               @click="singleDelete(scope.row)"
+-              >删除</el-button
+             >
++              {{ $t("product.supplier.goods.list.delete") }}
++            </el-button>
+           </template>
+         </el-table-column>
+       </el-table>
+@@ -188,7 +209,11 @@ export default {
+         file.type ===
+         "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+       if (!isXlsx) {
+-        this.$message.error("上传文件只能是 xlsx 格式!");
++        this.$message.error(
++          this.$t("product.common.error") +
++            ": " +
++            this.$t("product.supplier.goods.list.importFailed")
++        );
+         return false;
+       }
+       this.supplierObj.excelFiles = file.name;
+@@ -202,10 +227,15 @@ export default {
+      */
+     success(response, file, fileList) {
+       if (response.result === "success") {
+-        this.$message.success("上传成功");
++        this.$message.success(
++          this.$t("product.supplier.goods.list.importSuccess")
++        );
+         this.search();
+       } else {
+-        this.$message.error(response.message || "上传失败");
++        this.$message.error(
++          response.message ||
++            this.$t("product.supplier.goods.list.importFailed")
++        );
+       }
+     },
+     /**
+@@ -230,7 +260,11 @@ export default {
+      */
+     join() {
+       if (this.multipleSelection.length === 0) {
+-        this.$message.error("请选择需要操作的数据");
++        this.$message.error(
++          this.$t("product.common.pleaseSelect") +
++            this.$t("product.common.operation") +
++            this.$t("product.common.data") || "请选择需要操作的数据"
++        );
+         return;
+       }
+       this.ids = [];
+@@ -239,7 +273,9 @@ export default {
+       });
+       this.$api.addSupplierToTempSku(this.ids, (res) => {
+         if (res.data.result === "success") {
+-          this.$message.success("操作成功");
++          this.$message.success(
++            this.$t("product.supplier.goods.list.joinSuccess")
++          );
+           this.search();
+           this.multipleSelection = [];
+         }
+@@ -273,14 +309,22 @@ export default {
+      */
+     mutilateDelete() {
+       if (this.multipleSelection.length === 0) {
+-        this.$message.error("请选择需要操作的数据");
++        this.$message.error(
++          this.$t("product.common.pleaseSelect") +
++            this.$t("product.common.operation") +
++            this.$t("product.common.data") || "请选择需要操作的数据"
++        );
+         return;
+       }
+-      this.$confirm("确定要删除选中的商品吗？", "提示", {
+-        confirmButtonText: "确定",
+-        cancelButtonText: "取消",
+-        type: "warning",
+-      })
++      this.$confirm(
++        this.$t("product.supplier.goods.list.confirmBatchDelete"),
++        this.$t("product.common.tip"),
++        {
++          confirmButtonText: this.$t("product.common.confirm"),
++          cancelButtonText: this.$t("product.common.cancel"),
++          type: "warning",
++        }
++      )
+         .then(() => {
+           this.ids = [];
+           this.multipleSelection.forEach((row) => {
+@@ -293,7 +337,9 @@ export default {
+             },
+             (res) => {
+               if (res.data.result === "success") {
+-                this.$message.success("删除成功");
++                this.$message.success(
++                  this.$t("product.supplier.goods.list.deleteSuccess")
++                );
+                 this.search();
+                 this.multipleSelection = [];
+               }
+@@ -307,11 +353,15 @@ export default {
+      * @param {Object} rows - 行数据
+      */
+     singleDelete(rows) {
+-      this.$confirm("确定要删除该商品吗？", "提示", {
+-        confirmButtonText: "确定",
+-        cancelButtonText: "取消",
+-        type: "warning",
+-      })
++      this.$confirm(
++        this.$t("product.supplier.goods.list.confirmDelete"),
++        this.$t("product.common.tip"),
++        {
++          confirmButtonText: this.$t("product.common.confirm"),
++          cancelButtonText: this.$t("product.common.cancel"),
++          type: "warning",
++        }
++      )
+         .then(() => {
+           this.$api.updateGoodsSupplierSkuStatusByIds(
+             {
+@@ -320,7 +370,9 @@ export default {
+             },
+             (res) => {
+               if (res.data.result === "success") {
+-                this.$message.success("删除成功");
++                this.$message.success(
++                  this.$t("product.supplier.goods.list.deleteSuccess")
++                );
+                 this.search();
+               }
+             }
+diff --git a/src/pages/product/supplier/SupplierManagement/components/add.vue b/src/pages/product/supplier/SupplierManagement/components/add.vue
+index 626f66b6..7e3d4c25 100644
+--- a/src/pages/product/supplier/SupplierManagement/components/add.vue
++++ b/src/pages/product/supplier/SupplierManagement/components/add.vue
+@@ -1,6 +1,6 @@
+ <template>
+   <el-dialog
+-    :title="mode === 'add' ? '门店新增' : '门店编辑'"
++    :title="mode === 'add' ? $t('product.supplier.store.addStore') : $t('product.supplier.store.editStore')"
+     :visible.sync="isShow"
+     width="700px"
+     @close="closeEvent"
+@@ -12,28 +12,28 @@
+       :model="filterForm"
+       class="dialog-form"
+     >
+-      <el-form-item label="自提门店名称：" prop="storeName">
++      <el-form-item :label="$t('product.supplier.store.storeName') + '：'" prop="storeName">
+         <el-input
+-          placeholder="请输入自提门店名称"
++          :placeholder="$t('product.supplier.store.inputStoreName')"
+           v-model="filterForm.storeName"
+         />
+       </el-form-item>
+-      <el-form-item label="详细地址：" prop="storeAddress">
++      <el-form-item :label="$t('product.supplier.store.storeAddress') + '：'" prop="storeAddress">
+         <el-input
+           type="textarea"
+           :rows="5"
+           v-model="filterForm.storeAddress"
+-          placeholder="请输入详细地址"
++          :placeholder="$t('product.supplier.store.inputStoreAddress')"
+         />
+       </el-form-item>
+-      <el-form-item label="自提时间：" prop="pickUpGoodsTime">
++      <el-form-item :label="$t('product.supplier.store.pickupTime') + '：'" prop="pickUpGoodsTime">
+         <div
+           class="time-item"
+           v-for="(item, index) in filterForm.pickUpGoodsTime"
+           :key="`time_${index}`"
+         >
+           <el-time-select
+-            placeholder="起始时间"
++            :placeholder="$t('product.supplier.store.startTimePlaceholder')"
+             v-model="item.startTime"
+             :picker-options="{
+               start: '00:00',
+@@ -42,9 +42,9 @@
+             }"
+             class="time-select"
+           />
+-          <span class="time-separator">至</span>
++          <span class="time-separator">{{ $t('product.supplier.management.contractTo') }}</span>
+           <el-time-select
+-            placeholder="结束时间"
++            :placeholder="$t('product.supplier.store.endTimePlaceholder')"
+             v-model="item.endTime"
+             :picker-options="{
+               start: '00:00',
+@@ -61,30 +61,30 @@
+             @click.prevent="deleTime(item, index)"
+             class="delete-btn"
+           >
+-            删除
++            {{ $t('product.supplier.store.deleteTime') }}
+           </el-button>
+         </div>
+       </el-form-item>
+       <el-form-item>
+-        <el-button type="primary" icon="el-icon-plus" @click="addTime"
+-          >新增时间</el-button
+-        >
++        <el-button type="primary" icon="el-icon-plus" @click="addTime">
++          {{ $t('product.supplier.store.addTime') }}
++        </el-button>
+       </el-form-item>
+-      <el-form-item label="状态" prop="status">
++      <el-form-item :label="$t('product.common.status')" prop="status">
+         <el-select
+           v-model="filterForm.status"
+-          placeholder="请选择"
++          :placeholder="$t('product.supplier.store.selectStatus')"
+           style="width: 100%"
+         >
+-          <el-option :value="1" label="启用" />
+-          <el-option :value="2" label="禁用" />
++          <el-option :value="1" :label="$t('product.supplier.store.enabled')" />
++          <el-option :value="2" :label="$t('product.supplier.store.disabled')" />
+         </el-select>
+       </el-form-item>
+     </el-form>
+     <template #footer>
+       <div class="dialog-footer">
+-        <el-button type="primary" @click="submit">确定</el-button>
+-        <el-button @click="close">取消</el-button>
++        <el-button type="primary" @click="submit">{{ $t('product.common.confirm') }}</el-button>
++        <el-button @click="close">{{ $t('product.common.cancel') }}</el-button>
+       </div>
+     </template>
+   </el-dialog>
+@@ -167,10 +167,10 @@ export default {
+           (res) => {
+             if (res.data.result === "success" || res.data.code === "0") {
+               this.$emit("search");
+-              this.$message.success("新增成功");
++              this.$message.success(this.$t('product.supplier.store.addSuccess'));
+               this.isShow = false;
+             } else {
+-              this.$message.error(res.data.message || "新增失败");
++              this.$message.error(res.data.message || this.$t('product.common.failed'));
+             }
+           }
+         );
+@@ -193,11 +193,11 @@ export default {
+           },
+           (res) => {
+             if (res.data.result === "success" || res.data.code === "0") {
+-              this.$message.success("修改成功");
++              this.$message.success(this.$t('product.supplier.store.modifySuccess'));
+               this.$emit("search");
+               this.isShow = false;
+             } else {
+-              this.$message.error(res.data.message || "修改失败");
++              this.$message.error(res.data.message || this.$t('product.common.failed'));
+             }
+           }
+         );
+@@ -222,7 +222,7 @@ export default {
+         this.deleteId = row.id;
+       }
+       if (this.filterForm.pickUpGoodsTime.length <= 1) {
+-        this.$message.warning("至少保留一个时间段");
++        this.$message.warning(this.$t('product.supplier.store.atLeastOneTime'));
+         return;
+       }
+       this.$delete(this.filterForm.pickUpGoodsTime, index);
+diff --git a/src/pages/product/supplier/SupplierManagement/store-management.vue b/src/pages/product/supplier/SupplierManagement/store-management.vue
+index f23c9bca..ce592010 100644
+--- a/src/pages/product/supplier/SupplierManagement/store-management.vue
++++ b/src/pages/product/supplier/SupplierManagement/store-management.vue
+@@ -10,11 +10,14 @@
+         :model="filterForm"
+         class="search-form"
+       >
+-        <el-form-item label="自提点名称" prop="storeName">
++        <el-form-item
++          :label="$t('product.supplier.store.storeName')"
++          prop="storeName"
++        >
+           <el-select
+             v-model="filterForm.storeName"
+             clearable
+-            placeholder="请选择自提点名称"
++            :placeholder="$t('product.supplier.store.storeName')"
+           >
+             <el-option
+               v-for="(item, index) in selectStoreList"
+@@ -24,19 +27,29 @@
+             />
+           </el-select>
+         </el-form-item>
+-        <el-form-item label="状态" prop="status">
++        <el-form-item :label="$t('product.common.status')" prop="status">
+           <el-select
+             v-model="filterForm.status"
+             clearable
+-            placeholder="请选择状态"
++            :placeholder="$t('product.supplier.store.selectStatus')"
+           >
+-            <el-option label="启用" :value="1" />
+-            <el-option label="禁用" :value="2" />
++            <el-option
++              :label="$t('product.supplier.store.enabled')"
++              :value="1"
++            />
++            <el-option
++              :label="$t('product.supplier.store.disabled')"
++              :value="2"
++            />
+           </el-select>
+         </el-form-item>
+         <el-form-item>
+-          <el-button type="primary" @click="search(1)">查 询</el-button>
+-          <el-button type="success" @click="addStore()">新 增</el-button>
++          <el-button type="primary" @click="search(1)">{{
++            $t("product.supplier.store.search")
++          }}</el-button>
++          <el-button type="success" @click="addStore()">{{
++            $t("product.supplier.store.add")
++          }}</el-button>
+         </el-form-item>
+       </el-form>
+     </el-card>
+@@ -51,54 +64,72 @@
+         row-key="id"
+         stripe
+       >
+-        <el-table-column type="index" label="序号" width="70" align="center" />
+         <el-table-column
+-          label="自提点名称"
++          type="index"
++          :label="$t('product.common.serialNumber')"
++          width="70"
++          align="center"
++        />
++        <el-table-column
++          :label="$t('product.supplier.store.storeName')"
+           min-width="150"
+           prop="storeName"
+           align="center"
+         />
+         <el-table-column
+-          label="详细地址"
++          :label="$t('product.supplier.store.storeAddress')"
+           min-width="200"
+           prop="storeAddress"
+           align="center"
+           show-overflow-tooltip
+         />
+         <el-table-column
+-          label="状态"
++          :label="$t('product.common.status')"
+           min-width="100"
+           prop="status"
+           align="center"
+         >
+           <template slot-scope="scope">
+-            <el-tag v-if="scope.row.status === 1" type="success">启用</el-tag>
+-            <el-tag v-else type="danger">禁用</el-tag>
++            <el-tag v-if="scope.row.status === 1" type="success">{{
++              $t("product.supplier.store.enabled")
++            }}</el-tag>
++            <el-tag v-else type="danger">{{
++              $t("product.supplier.store.disabled")
++            }}</el-tag>
+           </template>
+         </el-table-column>
+         <el-table-column
+-          label="创建时间"
++          :label="$t('product.supplier.store.createTime')"
+           min-width="180"
+           prop="createTime"
+           align="center"
+         />
+         <el-table-column
+-          label="修改时间"
++          :label="$t('product.supplier.store.updateTime')"
+           min-width="180"
+           prop="updateTime"
+           align="center"
+         />
+-        <el-table-column label="操作" align="center" width="300" fixed="right">
++        <el-table-column
++          :label="$t('product.common.operation')"
++          align="center"
++          width="300"
++          fixed="right"
++        >
+           <template slot-scope="scope">
+-            <el-button size="small" type="info" @click="editStore(scope.row)"
+-              >编辑</el-button
+-            >
+-            <el-button size="small" type="primary" @click="storeTime(scope.row)"
+-              >查询自提时间</el-button
+-            >
+-            <el-button size="small" type="danger" @click="delStore(scope.row)"
+-              >删除</el-button
++            <el-button size="small" type="info" @click="editStore(scope.row)">
++              {{ $t("product.supplier.store.edit") }}
++            </el-button>
++            <el-button
++              size="small"
++              type="primary"
++              @click="storeTime(scope.row)"
+             >
++              {{ $t("product.supplier.store.queryPickupTime") }}
++            </el-button>
++            <el-button size="small" type="danger" @click="delStore(scope.row)">
++              {{ $t("product.supplier.store.delete") }}
++            </el-button>
+           </template>
+         </el-table-column>
+       </el-table>
+@@ -119,7 +150,9 @@
+ 
+     <!-- 自提时间表格 -->
+     <el-card v-show="storeShow" class="time-table-card">
+-      <h4 class="section-title">自提时间</h4>
++      <h4 class="section-title">
++        {{ $t("product.supplier.store.pickupTime") }}
++      </h4>
+       <el-table
+         :data="listInfo"
+         border
+@@ -128,38 +161,47 @@
+         row-key="id"
+         stripe
+       >
+-        <el-table-column type="index" label="序号" width="70" align="center" />
+         <el-table-column
+-          label="开始时间"
++          type="index"
++          :label="$t('product.common.serialNumber')"
++          width="70"
++          align="center"
++        />
++        <el-table-column
++          :label="$t('product.supplier.store.startTime')"
+           min-width="150"
+           prop="startTime"
+           align="center"
+         />
+         <el-table-column
+-          label="结束时间"
++          :label="$t('product.supplier.store.endTime')"
+           min-width="150"
+           prop="endTime"
+           align="center"
+         />
+         <el-table-column
+-          label="状态"
++          :label="$t('product.common.status')"
+           min-width="100"
+           prop="status"
+           align="center"
+         >
+           <template slot-scope="scope">
+-            <el-tag v-if="scope.row.status === 1" type="success">启用</el-tag>
+-            <el-tag v-else type="danger">禁用</el-tag>
++            <el-tag v-if="scope.row.status === 1" type="success">{{
++              $t("product.supplier.store.enabled")
++            }}</el-tag>
++            <el-tag v-else type="danger">{{
++              $t("product.supplier.store.disabled")
++            }}</el-tag>
+           </template>
+         </el-table-column>
+         <el-table-column
+-          label="创建时间"
++          :label="$t('product.supplier.store.createTime')"
+           min-width="180"
+           prop="createTime"
+           align="center"
+         />
+         <el-table-column
+-          label="修改时间"
++          :label="$t('product.supplier.store.updateTime')"
+           min-width="180"
+           prop="updateTime"
+           align="center"
+@@ -277,7 +319,7 @@ export default {
+       if (this.listInfo && this.listInfo.length) {
+         this.storeShow = true;
+       } else {
+-        this.$message.info("该门店暂无自提时间");
++        this.$message.info(this.$t("product.supplier.store.noPickupTime"));
+       }
+     },
+     /**
+@@ -285,11 +327,15 @@ export default {
+      * @param {Object} row - 行数据
+      */
+     delStore(row) {
+-      this.$confirm("是否删除该自提门店?", "提示", {
+-        confirmButtonText: "确定",
+-        cancelButtonText: "取消",
+-        type: "warning",
+-      })
++      this.$confirm(
++        this.$t("product.supplier.store.confirmDelete"),
++        this.$t("product.common.tip"),
++        {
++          confirmButtonText: this.$t("product.common.confirm"),
++          cancelButtonText: this.$t("product.common.cancel"),
++          type: "warning",
++        }
++      )
+         .then(() => {
+           this.$api.deleteStore(
+             {
+@@ -297,10 +343,14 @@ export default {
+             },
+             (res) => {
+               if (res.data.result === "success") {
+-                this.$message.success("删除成功");
++                this.$message.success(
++                  this.$t("product.supplier.store.deleteSuccess")
++                );
+                 this.search();
+               } else {
+-                this.$message.error(res.data.message || "删除失败");
++                this.$message.error(
++                  res.data.message || this.$t("product.common.failed")
++                );
+               }
+             }
+           );
+diff --git a/src/pages/product/supplier/SupplierManagement/supplier-management.vue b/src/pages/product/supplier/SupplierManagement/supplier-management.vue
+index 8cf3d079..8d6a39ee 100644
+--- a/src/pages/product/supplier/SupplierManagement/supplier-management.vue
++++ b/src/pages/product/supplier/SupplierManagement/supplier-management.vue
+@@ -8,26 +8,36 @@
+         :model="filterForm"
+         class="search-form"
+       >
+-        <el-form-item prop="name">
++        <el-form-item :label="$t('product.supplier.management.supplierName')">
+           <el-input
+             v-model="filterForm.name"
+-            placeholder="请输入发货仓名称"
++            :placeholder="$t('product.supplier.management.inputSupplierName')"
+             clearable
+           />
+         </el-form-item>
+-        <el-form-item prop="status">
++        <el-form-item :label="$t('product.common.status')">
+           <el-select
+             v-model="filterForm.supplier"
+-            placeholder="请选择状态"
++            :placeholder="$t('product.supplier.management.selectStatus')"
+             clearable
+           >
+-            <el-option label="启用" :value="1" />
+-            <el-option label="禁用" :value="0" />
++            <el-option
++              :label="$t('product.supplier.management.enabled')"
++              :value="1"
++            />
++            <el-option
++              :label="$t('product.supplier.management.disabled')"
++              :value="0"
++            />
+           </el-select>
+         </el-form-item>
+         <el-form-item>
+-          <el-button type="primary" @click="search(1)">查 询</el-button>
+-          <el-button type="success" @click="add">新 增</el-button>
++          <el-button type="primary" @click="search(1)">{{
++            $t("product.supplier.management.search")
++          }}</el-button>
++          <el-button type="success" @click="add">{{
++            $t("product.supplier.management.add")
++          }}</el-button>
+         </el-form-item>
+       </el-form>
+     </el-card>
+@@ -46,56 +56,78 @@
+       >
+         <el-table-column prop="id" label="ID" width="100" align="center" />
+         <el-table-column
+-          label="发货仓标识"
++          :label="$t('product.supplier.management.supplierCode')"
+           width="160"
+           prop="code"
+           align="center"
+         />
+         <el-table-column
+-          label="发货仓"
++          :label="$t('product.supplier.management.supplierName')"
+           width="180"
+           prop="name"
+           align="center"
+         />
+         <el-table-column
+-          label="创建时间"
++          :label="$t('product.supplier.management.createTime')"
+           width="200"
+           prop="createTime"
+           align="center"
+         />
+         <el-table-column
+-          label="修改时间"
++          :label="$t('product.supplier.management.updateTime')"
+           width="200"
+           prop="updateTime"
+           align="center"
+         />
+-        <el-table-column label="状态" width="150" align="center">
++        <el-table-column
++          :label="$t('product.common.status')"
++          width="150"
++          align="center"
++        >
+           <template slot-scope="scope">
+-            <el-tag v-if="scope.row.status === 0" type="danger">已禁用</el-tag>
+-            <el-tag v-else type="success">已启用</el-tag>
++            <el-tag v-if="scope.row.status === 0" type="danger">{{
++              $t("product.supplier.management.disabled")
++            }}</el-tag>
++            <el-tag v-else type="success">{{
++              $t("product.supplier.management.enabled")
++            }}</el-tag>
+           </template>
+         </el-table-column>
+-        <el-table-column label="是否入驻" width="120" align="center">
++        <el-table-column
++          :label="$t('product.supplier.management.settled')"
++          width="120"
++          align="center"
++        >
+           <template slot-scope="scope">
+-            <el-tag v-if="scope.row.settle === 0" type="danger">否</el-tag>
+-            <el-tag v-else type="success">是</el-tag>
++            <el-tag v-if="scope.row.settle === 0" type="danger">{{
++              $t("product.supplier.management.notSettled")
++            }}</el-tag>
++            <el-tag v-else type="success">{{
++              $t("product.supplier.management.settled")
++            }}</el-tag>
+           </template>
+         </el-table-column>
+         <el-table-column
+-          label="收货类型"
++          :label="$t('product.supplier.management.pickupType')"
+           width="150"
+           prop="pickupType"
+           align="center"
+         >
+           <template slot-scope="scope">
+-            <span v-if="scope.row.pickupType === 1">快递邮寄</span>
+-            <span v-else-if="scope.row.pickupType === 2">到店自提</span>
+-            <span v-else-if="scope.row.pickupType === 0">全部支持</span>
++            <span v-if="scope.row.pickupType === 1">{{
++              $t("product.supplier.management.pickupTypeExpress")
++            }}</span>
++            <span v-else-if="scope.row.pickupType === 2">{{
++              $t("product.supplier.management.pickupTypeStore")
++            }}</span>
++            <span v-else-if="scope.row.pickupType === 0">{{
++              $t("product.supplier.management.pickupTypeAll")
++            }}</span>
+             <span v-else>-</span>
+           </template>
+         </el-table-column>
+         <el-table-column
+-          label="支持门店"
++          :label="$t('product.supplier.management.storeList')"
+           width="300"
+           prop="storeNameList"
+           show-overflow-tooltip
+@@ -115,43 +147,56 @@
+           </template>
+         </el-table-column>
+         <el-table-column
+-          label="我司主体名称"
++          :label="$t('product.supplier.management.selfCompanyName')"
+           width="200"
+           prop="selfCompanyMainName"
+           show-overflow-tooltip
+           align="center"
+         />
+         <el-table-column
+-          label="供应商主体名称"
++          :label="$t('product.supplier.management.supplierCompanyName')"
+           width="200"
+           prop="supplierMainName"
+           show-overflow-tooltip
+           align="center"
+         />
+         <el-table-column
+-          label="合作方联系人"
++          :label="$t('product.supplier.management.partnerContact')"
+           width="200"
+           prop="partnerContactName"
+           show-overflow-tooltip
+           align="center"
+         />
+-        <el-table-column label="合同有效期" width="200" align="center">
++        <el-table-column
++          :label="$t('product.supplier.management.contractPeriod')"
++          width="200"
++          align="center"
++        >
+           <template slot-scope="scope">
+             <div
+               v-if="scope.row.contractBeginTime && scope.row.contractEndTime"
+             >
+               <p style="margin: 4px 0">{{ scope.row.contractBeginTime }}</p>
+-              <p style="margin: 4px 0">至</p>
++              <p style="margin: 4px 0">
++                {{ $t("product.supplier.management.contractTo") }}
++              </p>
+               <p style="margin: 4px 0">{{ scope.row.contractEndTime }}</p>
+             </div>
+-            <p v-else style="margin: 0">长期</p>
++            <p v-else style="margin: 0">
++              {{ $t("product.supplier.management.contractLongTerm") }}
++            </p>
+           </template>
+         </el-table-column>
+-        <el-table-column label="操作" width="120" fixed="right" align="center">
++        <el-table-column
++          :label="$t('product.common.operation')"
++          width="120"
++          fixed="right"
++          align="center"
++        >
+           <template slot-scope="scope">
+-            <el-button size="small" type="primary" @click="edit(scope.row)"
+-              >编辑</el-button
+-            >
++            <el-button size="small" type="primary" @click="edit(scope.row)">
++              {{ $t("product.supplier.management.edit") }}
++            </el-button>
+           </template>
+         </el-table-column>
+       </el-table>
+@@ -260,7 +305,9 @@ export default {
+      */
+     edit(data) {
+       if (!data || !data.id) {
+-        this.$message.error("发货仓id出错");
++        this.$message.error(
++          this.$t("product.supplier.management.supplierIdError")
++        );
+         return;
+       }
+       this.currentData = data;
+diff --git a/src/pages/product/supplier/SupplierManagement/supplierEditDialog.vue b/src/pages/product/supplier/SupplierManagement/supplierEditDialog.vue
+index 7f4ca4ca..6ea25d94 100644
+--- a/src/pages/product/supplier/SupplierManagement/supplierEditDialog.vue
++++ b/src/pages/product/supplier/SupplierManagement/supplierEditDialog.vue
+@@ -15,39 +15,63 @@
+       :disabled="disabled"
+       class="dialog-form"
+     >
+-      <el-form-item prop="name" label="发货仓名称">
+-        <el-input v-model="form.name" placeholder="请输入发货仓名称" />
++      <el-form-item
++        prop="name"
++        :label="$t('product.supplier.management.supplierName')"
++      >
++        <el-input
++          v-model="form.name"
++          :placeholder="$t('product.supplier.management.inputSupplierName')"
++        />
+       </el-form-item>
+-      <el-form-item prop="status" label="状态">
++      <el-form-item prop="status" :label="$t('product.common.status')">
+         <el-select
+           v-model="form.status"
+-          placeholder="请选择"
++          :placeholder="$t('product.supplier.management.selectStatus')"
+           style="width: 100%"
+         >
+-          <el-option label="启用" :value="1" />
+-          <el-option label="禁用" :value="0" />
++          <el-option
++            :label="$t('product.supplier.management.enabled')"
++            :value="1"
++          />
++          <el-option
++            :label="$t('product.supplier.management.disabled')"
++            :value="0"
++          />
+         </el-select>
+       </el-form-item>
+-      <el-form-item prop="settle" label="是否入驻">
++      <el-form-item
++        prop="settle"
++        :label="$t('product.supplier.management.settled')"
++      >
+         <el-select
+           v-model="form.settle"
+-          placeholder="请选择"
++          :placeholder="$t('product.supplier.management.selectSettle')"
+           style="width: 100%"
+         >
+-          <el-option label="是" :value="1" />
+-          <el-option label="否" :value="0" />
++          <el-option :label="$t('product.common.yes')" :value="1" />
++          <el-option :label="$t('product.common.no')" :value="0" />
+         </el-select>
+       </el-form-item>
+-      <el-form-item prop="pickupType" label="收货类型：">
++      <el-form-item
++        prop="pickupType"
++        :label="$t('product.supplier.management.pickupType') + '：'"
++      >
+         <el-radio-group v-model="form.pickupType">
+-          <el-radio :label="0">支持全部</el-radio>
+-          <el-radio :label="1">快递邮寄</el-radio>
+-          <el-radio :label="2">到店自提</el-radio>
++          <el-radio :label="0">{{
++            $t("product.supplier.management.pickupTypeAll")
++          }}</el-radio>
++          <el-radio :label="1">{{
++            $t("product.supplier.management.pickupTypeExpress")
++          }}</el-radio>
++          <el-radio :label="2">{{
++            $t("product.supplier.management.pickupTypeStore")
++          }}</el-radio>
+         </el-radio-group>
+       </el-form-item>
+       <el-form-item
+         prop="storeIdList"
+-        label="自提门店："
++        :label="$t('product.supplier.management.selectStore') + '：'"
+         v-if="form.pickupType === 2 || form.pickupType === 0"
+       >
+         <el-checkbox-group v-model="form.storeIdList" class="checkbox-group">
+@@ -60,40 +84,59 @@
+           </el-checkbox>
+         </el-checkbox-group>
+       </el-form-item>
+-      <el-form-item prop="selfCompanyMainName" label="我司主体名称：">
++      <el-form-item
++        prop="selfCompanyMainName"
++        :label="$t('product.supplier.management.selfCompanyName') + '：'"
++      >
+         <el-input
+           v-model="form.selfCompanyMainName"
+-          placeholder="请输入我司主体名称"
++          :placeholder="$t('product.supplier.management.inputSelfCompanyName')"
+         />
+       </el-form-item>
+-      <el-form-item prop="supplierMainName" label="供应商主体名称：">
++      <el-form-item
++        prop="supplierMainName"
++        :label="$t('product.supplier.management.supplierCompanyName') + '：'"
++      >
+         <el-input
+           v-model="form.supplierMainName"
+-          placeholder="请输入供应商主体名称"
++          :placeholder="
++            $t('product.supplier.management.inputSupplierCompanyName')
++          "
+         />
+       </el-form-item>
+-      <el-form-item prop="partnerContactName" label="合作方联系人：">
++      <el-form-item
++        prop="partnerContactName"
++        :label="$t('product.supplier.management.partnerContact') + '：'"
++      >
+         <el-input
+           v-model="form.partnerContactName"
+-          placeholder="请输入合作方联系人"
++          :placeholder="$t('product.supplier.management.inputPartnerContact')"
+         />
+       </el-form-item>
+-      <el-form-item label="合同有效期：">
++      <el-form-item
++        :label="$t('product.supplier.management.contractPeriod') + '：'"
++      >
+         <div class="date-picker-group">
+           <el-date-picker
+             v-model="form.contractBeginTime"
+             type="date"
+             value-format="yyyy-MM-dd HH:mm:ss"
+-            placeholder="请选择开始时间"
++            :placeholder="
++              $t('product.supplier.management.selectContractBeginTime')
++            "
+             style="width: 48%"
+           />
+-          <span class="date-separator">至</span>
++          <span class="date-separator">{{
++            $t("product.supplier.management.contractTo")
++          }}</span>
+           <el-date-picker
+             v-model="form.contractEndTime"
+             type="date"
+             value-format="yyyy-MM-dd HH:mm:ss"
+             :picker-options="endPickerOptions"
+-            placeholder="请选择结束时间"
++            :placeholder="
++              $t('product.supplier.management.selectContractEndTime')
++            "
+             style="width: 48%"
+           />
+         </div>
+@@ -101,8 +144,12 @@
+     </el-form>
+     <!-- 操作按钮 -->
+     <div class="dialog-footer" v-if="!disabled" slot="footer">
+-      <el-button type="primary" @click="submit">保存</el-button>
+-      <el-button @click="closeDialog">取消</el-button>
++      <el-button type="primary" @click="submit">{{
++        $t("product.common.save")
++      }}</el-button>
++      <el-button @click="closeDialog">{{
++        $t("product.common.cancel")
++      }}</el-button>
+     </div>
+   </el-dialog>
+ </template>
+@@ -129,13 +176,6 @@ export default {
+         contractEndTime: "", // 合同结束时间
+       },
+       selectStoreList: [],
+-      rules: {
+-        settle: {
+-          required: true,
+-          message: "请选择是否入驻",
+-          trigger: "change",
+-        },
+-      },
+       endPickerOptions: {
+         disabledDate: (time) => {
+           if (this.form.contractBeginTime) {
+@@ -155,8 +195,23 @@ export default {
+      */
+     title() {
+       return this.currentData && this.currentData.id
+-        ? "发货仓编辑"
+-        : "新增发货仓";
++        ? this.$t("product.supplier.management.title") +
++            " - " +
++            this.$t("product.common.edit")
++        : this.$t("product.supplier.management.add");
++    },
++    /**
++     * 表单验证规则
++     * @returns {Object} 验证规则
++     */
++    rules() {
++      return {
++        settle: {
++          required: true,
++          message: this.$t("product.supplier.management.selectSettle"),
++          trigger: "change",
++        },
++      };
+     },
+     /**
+      * 是否禁用表单
+@@ -242,21 +297,31 @@ export default {
+             this.$api.updateGoodsSupplier(params, (res) => {
+               if (res.data.code === "0") {
+                 this.getSupplierInfo();
+-                this.$message.success("保存成功");
++                this.$message.success(
++                  this.$t("product.supplier.management.saveSuccess")
++                );
+                 this.closeDialog();
+                 this.$emit("onActiveSaveSuccess");
+               } else {
+-                this.$message.error(res.data.message || "保存失败");
++                this.$message.error(
++                  res.data.message ||
++                    this.$t("product.supplier.management.saveFailed")
++                );
+               }
+             });
+           } else {
+             this.$api.addGoodsSupplier(params, (res) => {
+               if (res.data.code === "0") {
+-                this.$message.success("保存成功");
++                this.$message.success(
++                  this.$t("product.supplier.management.saveSuccess")
++                );
+                 this.closeDialog();
+                 this.$emit("onActiveSaveSuccess");
+               } else {
+-                this.$message.error(res.data.message || "保存失败");
++                this.$message.error(
++                  res.data.message ||
++                    this.$t("product.supplier.management.saveFailed")
++                );
+               }
+             });
+           }
+diff --git a/src/pages/product/supplier/SupplierSelection/supplier-selection.vue b/src/pages/product/supplier/SupplierSelection/supplier-selection.vue
+index 5a2f87d8..45780e87 100644
+--- a/src/pages/product/supplier/SupplierSelection/supplier-selection.vue
++++ b/src/pages/product/supplier/SupplierSelection/supplier-selection.vue
+@@ -3,12 +3,12 @@
+     <!-- 查询表单 -->
+     <el-card class="search-card">
+       <el-form :inline="true" class="search-form">
+-        <el-form-item label="发货仓">
++        <el-form-item :label="$t('product.supplier.goods.selection.supplier')">
+           <el-select
+             v-model="supplier"
+             clearable
+             filterable
+-            placeholder="请选择发货仓"
++            :placeholder="$t('product.supplier.goods.selection.selectSupplier')"
+           >
+             <el-option
+               v-for="option in supplierOption"
+@@ -18,11 +18,17 @@
+             />
+           </el-select>
+         </el-form-item>
+-        <el-form-item label="SKU">
+-          <el-input v-model="skus" placeholder="请输入SKU" clearable />
++        <el-form-item :label="$t('product.supplier.goods.selection.skuCode')">
++          <el-input
++            v-model="skus"
++            :placeholder="$t('product.supplier.goods.selection.skuCode')"
++            clearable
++          />
+         </el-form-item>
+         <el-form-item>
+-          <el-button type="primary" @click="getFirstPage">抓取SKU</el-button>
++          <el-button type="primary" @click="getFirstPage">{{
++            $t("product.supplier.goods.selection.search")
++          }}</el-button>
+           <div class="import-excel">
+             <el-upload
+               ref="info"
+@@ -35,9 +41,9 @@
+               :auto-upload="false"
+               :on-change="importIng"
+             >
+-              <el-button type="primary" @click="batchFetching"
+-                >批量抓取</el-button
+-              >
++              <el-button type="primary" @click="batchFetching">
++                {{ $t("product.supplier.goods.selection.importExcel") }}
++              </el-button>
+             </el-upload>
+           </div>
+           <el-button
+@@ -47,11 +53,11 @@
+             download="导入发货仓模板.xlsx"
+             class="download-link"
+           >
+-            下载抓取模板
++            {{ $t("product.supplier.goods.selection.downloadTemplate") }}
++          </el-button>
++          <el-button type="success" @click="addManyTempProd">
++            {{ $t("product.supplier.goods.selection.add") }}
+           </el-button>
+-          <el-button type="success" @click="addManyTempProd"
+-            >加入SKU商品池</el-button
+-          >
+         </el-form-item>
+       </el-form>
+     </el-card>
+@@ -75,14 +81,14 @@
+         />
+         <el-table-column
+           prop="sku"
+-          label="发货仓SKU"
++          :label="$t('product.supplier.goods.selection.skuCode')"
+           min-width="180"
+           align="center"
+           show-overflow-tooltip
+         />
+         <el-table-column
+           prop="name"
+-          label="商品名称"
++          :label="$t('product.supplier.goods.selection.skuName')"
+           min-width="250"
+           align="center"
+           show-overflow-tooltip
+@@ -95,8 +101,7 @@
+           show-overflow-tooltip
+         />
+         <el-table-column
+-          prop="guState"
+-          label="商品状态"
++          :label="$t('product.common.status')"
+           width="120"
+           align="center"
+         >
+@@ -111,14 +116,18 @@
+             <span v-else>-</span>
+           </template>
+         </el-table-column>
+-        <el-table-column label="操作" width="160" align="center">
++        <el-table-column
++          :label="$t('product.common.operation')"
++          width="160"
++          align="center"
++        >
+           <template slot-scope="scope">
+             <el-button
+               size="small"
+               type="primary"
+               @click="addTempProd(scope.row.sku)"
+             >
+-              加入SKU商品池
++              {{ $t("product.supplier.goods.selection.add") }}
+             </el-button>
+           </template>
+         </el-table-column>
+@@ -165,11 +174,16 @@ export default {
+      */
+     getFirstPage() {
+       if (!this.supplier) {
+-        this.$message.warning("请选择发货仓");
++        this.$message.warning(
++          this.$t("product.supplier.goods.selection.selectSupplier")
++        );
+         return;
+       }
+       if (!this.skus) {
+-        this.$message.warning("请输入SKU");
++        this.$message.warning(
++          this.$t("product.common.pleaseInput") +
++            this.$t("product.supplier.goods.selection.skuCode")
++        );
+         return;
+       }
+       this.trueSkus = this.skus;
+@@ -234,11 +248,17 @@ export default {
+         temp.push(row.sku);
+       });
+       if (temp.length === 0) {
+-        this.$message.warning("请选择操作行");
++        this.$message.warning(
++          this.$t("product.common.pleaseSelect") +
++            this.$t("product.common.operation") +
++            "行"
++        );
+         return;
+       }
+       if (!this.supplier) {
+-        this.$message.warning("请选择发货仓");
++        this.$message.warning(
++          this.$t("product.supplier.goods.selection.selectSupplier")
++        );
+         return;
+       }
+       this.addTempProd(temp.join(","));
+@@ -262,12 +282,15 @@ export default {
+                 res.data.data.existedSupplierSkuCode.length > 0
+               ) {
+                 this.$message.success(
+-                  `添加成功, 其中${res.data.data.existedSupplierSkuCode.join(
+-                    ","
+-                  )}已存在`
++                  this.$t("product.supplier.goods.selection.addSuccess") +
++                    `, 其中${res.data.data.existedSupplierSkuCode.join(
++                      ","
++                    )}已存在`
+                 );
+               } else {
+-                this.$message.success("添加成功");
++                this.$message.success(
++                  this.$t("product.supplier.goods.selection.addSuccess")
++                );
+               }
+               this.search();
+               this.multipleSelection = [];
+@@ -286,7 +309,10 @@ export default {
+       const suffix = fileArr[fileArr.length - 1];
+       // 只能导入.xls和.xlsx文件
+       if (!/(xls|xlsx)/i.test(suffix)) {
+-        this.$message.error("文件格式不正确，请上传 .xls 或 .xlsx 文件");
++        this.$message.error(
++          this.$t("product.supplier.goods.selection.importFailed") ||
++            "文件格式不正确，请上传 .xls 或 .xlsx 文件"
++        );
+         return false;
+       }
+       return true;
+@@ -299,10 +325,15 @@ export default {
+      */
+     infoSuccess(response, file, fileList) {
+       if (response.result === "success") {
+-        this.$message.success("上传成功");
++        this.$message.success(
++          this.$t("product.supplier.goods.selection.importSuccess")
++        );
+         this.search();
+       } else {
+-        this.$message.error(response.message || "上传失败");
++        this.$message.error(
++          response.message ||
++            this.$t("product.supplier.goods.selection.importFailed")
++        );
+       }
+     },
+     /**
+@@ -325,10 +356,15 @@ export default {
+           formdata,
+           (res) => {
+             if (res.data.code === "0") {
+-              this.$message.success("导入成功");
++              this.$message.success(
++                this.$t("product.supplier.goods.selection.importSuccess")
++              );
+               this.search();
+             } else {
+-              this.$message.error(res.data.message || "导入失败");
++              this.$message.error(
++                res.data.message ||
++                  this.$t("product.supplier.goods.selection.importFailed")
++              );
+               if (this.$refs.info) {
+                 this.$refs.info.value = null;
+               }

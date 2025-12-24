@@ -1,7 +1,11 @@
 #!/bin/bash
 set -e
 PROJ=$1
-if [ -z "$PROJ" ]; then echo "Usage: review <project-path>"; exit 1; fi
+if [ -z "$PROJ" ]; then 
+  echo "Usage: review <project-path> [base-branch] [target-branch]"
+  echo "  Example: review ./my-project master develop"
+  exit 1
+fi
 
 cd "$(dirname "$0")/.."
 cd runner
@@ -10,4 +14,4 @@ if [ ! -d node_modules ]; then
   npm install
 fi
 
-node index.js "$PROJ"
+node index.js "$@"
